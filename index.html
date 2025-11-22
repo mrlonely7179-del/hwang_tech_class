@@ -124,51 +124,55 @@
   <script>
     const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx0J8wtemzRQWGO7Ld4yuSFmxYkGkfyhCHNkKk9OHyf6Fkh6StIXPrLw57frqpBEYme/exec"; // 배포주소
 
-    function generateQuiz(cardNumber) {
-        const source = document.getElementById('source' + cardNumber).value;
-        const btn = event.target;
-        const statusDiv = document.getElementById('status' + cardNumber);
+   function generateQuiz(cardNumber) {
+    const source = document.getElementById('source' + cardNumber).value;
+    const btn = event.target;
+    const statusDiv = document.getElementById('status' + cardNumber);
 
-        if (!source.trim()) {
-            alert("소스 텍스트를 입력해주세요!");
-            return;
-        }
-
-        btn.disabled = true;
-        btn.innerText = "AI가 분석 중... ⏳";
-        statusDiv.style.display = "none";
-
-        fetch(GAS_WEB_APP_URL, {
-            method: "POST",
-            mode: "cors",
-            headers: {
-                "Content-Type": "text/plain;charset=utf-8",
-            },
-            body: JSON.stringify({ sourceText: source })
-        })
-        .then(response => response.json())
-        .then(data => {
-            btn.disabled = false;
-            btn.innerText = "퀴즈 생성";
-            statusDiv.style.display = "block";
-
-            if (data.result === 'success') {
-                statusDiv.className = 'status success';
-                statusDiv.innerHTML = `✅ 퀴즈 생성 완료!<br><a href="${data.url}" target="_blank" style="color: #1a7f37; font-weight: bold;">👉 퀴즈 풀기</a>`;
-            } else {
-                throw new Error(data.message);
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            btn.disabled = false;
-            btn.innerText = "퀴즈 생성";
-            statusDiv.style.display = "block";
-            statusDiv.className = 'status error';
-            statusDiv.innerText = "오류: " + error.message;
-        });
+    if (!source.trim()) {
+        alert("소스 텍스트를 입력해주세요!");
+        return;
     }
 
+    btn.disabled = true;
+    btn.innerText = "AI가 분석 중... ⏳";
+    statusDiv.style.display = "none";
+
+    fetch(GAS_WEB_APP_URL, {
+        method: "POST",
+        mode: "cors",
+        headers: {
+            "Content-Type": "text/plain;charset=utf-8",
+        },
+        body: JSON.stringify({ sourceText: source })
+    })
+    .then(response => response.json())
+    .then(data => {
+        btn.disabled = false;
+        btn.innerText = "퀴즈 생성";
+        statusDiv.style.display = "block";
+
+        if (data.result === 'success') {
+            statusDiv.className = 'status success';
+            // 🔴 수정: editUrl 포함
+            statusDiv.innerHTML = `
+                ✅ 퀴즈 생성 완료!<br>
+                <a href="${data.url}" target="_blank" style="color: #1a7f37; font-weight: bold;">👉 퀴즈 풀기</a>
+                ${data.editUrl ? '<br><small><a href="' + data.editUrl + '" target="_blank" style="color: #666;">⚙️ 첫 퀴즈 설정 (클릭)</a></small>' : ''}
+            `;
+        } else {
+            throw new Error(data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        btn.disabled = false;
+        btn.innerText = "퀴즈 생성";
+        statusDiv.style.display = "block";
+        statusDiv.className = 'status error';
+        statusDiv.innerText = "오류: " + error.message;
+        });
+    }
     function openPerformanceForm() {
       fetch(GAS_WEB_APP_URL, {
         method: "POST",
