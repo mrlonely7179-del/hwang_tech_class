@@ -48,6 +48,17 @@
               <button class="quiz-btn" onclick="generateQuiz(1)">퀴즈 생성</button>
               <div id="status1" class="status"></div>
             </div>
+            <div class="quiz-section">
+  <small class="text-muted">퀴즈 생성하기</small>
+  <textarea id="source1" placeholder="소스 텍스트를 입력하세요..."></textarea>
+  <button class="quiz-btn" onclick="generateQuiz(1)">퀴즈 생성</button>
+  
+  <!-- 🔴 수행평가 버튼 추가 -->
+  <button class="quiz-btn" style="background-color: #0969da; margin-top: 5px;" onclick="openPerformanceForm()">수행평가 바로가기</button>
+  
+  <div id="status1" class="status"></div>
+</div>
+
           </div>
         </div>
       </div>
@@ -166,6 +177,25 @@
             statusDiv.innerText = "오류: " + error.message;
         });
     }
+    function openPerformanceForm() {
+  fetch(GAS_WEB_APP_URL, {
+    method: "POST",
+    mode: "cors",
+    headers: {"Content-Type": "text/plain;charset=utf-8"},
+    body: JSON.stringify({ action: 'getPerformanceForm' })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.result === 'success') {
+      window.open(data.url, '_blank');
+    } else {
+      alert('오류: ' + data.message);
+    }
+  })
+  .catch(error => {
+    alert('오류: ' + error.message);
+  });
+}
   </script>
 </body>
 </html>
