@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>발전학습 - AI 자기주도학습</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #FCE7F3 0%, #F9A8D4 100%);
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+        
+        /* Header */
+        .page-header {
+            background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+        
+        .nav-home {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+        
+        .btn-home {
+            background: white;
+            color: #EC4899;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-home:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            color: #DB2777;
+        }
+        
+        /* Content */
+        .content-section {
+            padding: 60px 20px;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #831843;
+            margin-bottom: 30px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .category-box {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .category-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #831843;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #F9A8D4;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .ai-feature-card {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 5px solid #F59E0B;
+            transition: all 0.3s ease;
+        }
+        
+        .ai-feature-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(245, 158, 11, 0.3);
+        }
+        
+        .ai-feature-card h5 {
+            color: #92400E;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .ai-feature-card p {
+            color: #78350F;
+            margin: 0;
+            line-height: 1.6;
+        }
+        
+        .ai-badge {
+            background: linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .project-card {
+            background: linear-gradient(135deg, #E0E7FF 0%, #C7D2FE 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 5px solid #6366F1;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+        }
+        
+        .project-card h5 {
+            color: #3730A3;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .project-card p {
+            color: #4338CA;
+            margin: 0;
+            line-height: 1.6;
+        }
+        
+        .skill-badge {
+            background: linear-gradient(135deg, #FCE7F3 0%, #F9A8D4 100%);
+            color: #831843;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin: 5px;
+            border: 2px solid #F472B6;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-badge:hover {
+            background: #F472B6;
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .nav-home {
+                position: static;
+                margin: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Home Button -->
+    <div class="nav-home">
+        <a href="index.html" class="btn-home">
+            <i class="bi bi-house-door-fill"></i> 홈으로
+        </a>
+    </div>
+
+    <!-- Header -->
+    <header class="page-header">
+        <h1><i class="bi bi-trophy-fill"></i> 발전학습</h1>
+        <p>실전 프로젝트와 협업을 통해 전문적인 역량을 키워보세요</p>
+    </header>
+
+    <!-- Content -->
+    <section class="content-section">
+        <div class="container">
+            
+            <!-- 핵심 역량 개발 섹션 -->
+            <div class="category-box">
+                <h2 class="category-title">
+                    <i class="bi bi-star-fill"></i> 바이블 코딩을 만드는 기술
+                </h2>
+                
+                <div class="skill-badge">
+                    <i class="bi bi-code-slash"></i> 베이스코드 활용법
+                </div>
+                <div class="skill-badge">
+                    <i class="bi bi-gear-fill"></i> 백엔드 분석
+                </div>
+                <div class="skill-badge">
+                    <i class="bi bi-bug-fill"></i> 체계적 디버깅
+                </div>
+            </div>
+
+            <!-- AI 프로젝트 섹션 -->
+            <div class="category-box">
+                <h2 class="category-title">
+                    <i class="bi bi-rocket-takeoff-fill"></i> AI 프로젝트 실습
+                    <span class="ai-badge"><i class="bi bi-stars"></i> AI</span>
+                </h2>
+
+                <div class="ai-feature-card">
+                    <h5>
+                        <i class="bi bi-film"></i> 
+                        베이스코드 영화법
+                    </h5>
+                    <p>AI를 활용한 영상 콘텐츠 제작 및 편집 기술을 배워보세요</p>
+                </div>
+
+                <div class="ai-feature-card">
+                    <h5>
+                        <i class="bi bi-palette-fill"></i> 
+                        웰컴 대회 바우처 오염 만들기 (아타이드 코딩)
+                    </h5>
+                    <p>창의적인 디자인과 코딩을 결합한 프로젝트를 완성하세요</p>
+                </div>
+
+                <div class="ai-feature-card">
+                    <h5>
+                        <i class="bi bi-eye-fill"></i> 
+                        이석윤 컨설팅 업 만들기 (업체천 코딩)
+                    </h5>
+                    <p>전문가 수준의 웹 애플리케이션을 개발해보세요</p>
+                </div>
+            </div>
+
+            <!-- 실전 프로젝트 섹션 -->
+            <div class="category-box">
+                <h2 class="category-title">
+                    <i class="bi bi-briefcase-fill"></i> 실전 프로젝트
+                    <span class="ai-badge"><i class="bi bi-stars"></i> AI</span>
+                </h2>
+
+                <div class="project-card">
+                    <h5>
+                        <i class="bi bi-list-check"></i> 
+                        수행평가 과제 출제 (구글 설문지)
+                    </h5>
+                    <p>Google Forms를 활용하여 체계적인 평가 시스템을 구축하세요</p>
+                </div>
+
+                <div class="project-card">
+                    <h5>
+                        <i class="bi bi-globe2"></i> 
+                        과제 내용 작성 및 첨부 웹 자기평가
+                    </h5>
+                    <p>웹 기반 자기평가 시스템을 개발하고 운영해보세요</p>
+                </div>
+
+                <div class="project-card">
+                    <h5>
+                        <i class="bi bi-bar-chart-fill"></i> 
+                        성적은 부모한 시험과 메이킹 처음
+                    </h5>
+                    <p>데이터 분석과 시각화를 통한 성적 관리 시스템을 만들어보세요</p>
+                </div>
+
+                <div class="project-card">
+                    <h5>
+                        <i class="bi bi-journal-text"></i> 
+                        제출 교사용 페이지 제공 및 관리특색 연습
+                    </h5>
+                    <p>교사용 관리 페이지를 설계하고 구현해보세요</p>
+                </div>
+            </div>
+
+            <!-- 교육용 페이지 개발 섹션 -->
+            <div class="category-box">
+                <h2 class="category-title">
+                    <i class="bi bi-window-desktop"></i> 교육용 페이지 개발
+                </h2>
+
+                <div class="ai-feature-card">
+                    <h5>
+                        <i class="bi bi-file-code-fill"></i> 
+                        교육용 페이지 구축 APPSheet로 개발 예정
+                    </h5>
+                    <p>AppSheet를 활용한 No-Code/Low-Code 개발 경험을 쌓으세요</p>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="ai-feature-card">
+                            <h5>
+                                <i class="bi bi-people-fill"></i> 
+                                학습 관리 위한 교사용 법 - 구글 APPSheet로 개발 예정
+                            </h5>
+                            <p>교사용 학습 관리 시스템 구축</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="ai-feature-card">
+                            <h5>
+                                <i class="bi bi-person-check-fill"></i> 
+                                학습 관리 위한 교사용 법
+                            </h5>
+                            <p>교사 전용 관리 도구 개발</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 최종 역량 -->
+            <div class="category-box">
+                <h2 class="category-title">
+                    <i class="bi bi-award-fill"></i> 발전학습 완성 목표
+                </h2>
+                <div class="alert" style="background: linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%); border: none; color: #1E40AF; border-left: 5px solid #3B82F6;">
+                    <h5><i class="bi bi-lightbulb-fill"></i> 이 단계를 마치면...</h5>
+                    <ul style="margin-bottom: 0; line-height: 2;">
+                        <li>실전 프로젝
