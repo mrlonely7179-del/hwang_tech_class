@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI를 활용한 기술교과 자기주도학습 페이지</title>
+    <title> AI를 활용한 기술교과 자기주도학습 </title>
     
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -145,7 +145,220 @@
             height: 100px;
             border-radius: 25px;
             display: flex;
-            ali기
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin: 0 auto 30px;
+            color: white;
+        }
+        
+        .card-icon.basic {
+            background: linear-gradient(135deg, #FCD34D 0%, #F59E0B 100%);
+        }
+        
+        .card-icon.advanced {
+            background: linear-gradient(135deg, #60A5FA 0%, #3B82F6 100%);
+        }
+        
+        .card-icon.development {
+            background: linear-gradient(135deg, #F472B6 0%, #EC4899 100%);
+        }
+        
+        .card-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .card-description {
+            font-size: 1.1rem;
+            color: #64748b;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .btn-enter {
+            width: 100%;
+            padding: 18px 30px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .btn-enter.basic {
+            background: linear-gradient(135deg, #FCD34D 0%, #F59E0B 100%);
+        }
+        
+        .btn-enter.advanced {
+            background: linear-gradient(135deg, #60A5FA 0%, #3B82F6 100%);
+        }
+        
+        .btn-enter.development {
+            background: linear-gradient(135deg, #F472B6 0%, #EC4899 100%);
+        }
+        
+        .btn-enter:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            color: white;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1e293b;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .footer p {
+            margin: 0;
+            opacity: 0.8;
+        }
+        
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .card-title {
+                font-size: 1.5rem;
+            }
+        }
+        
+        /* Floating Animation */
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <i class="bi bi-cpu"></i> AI를 활용한 기술교과 자기주도학습 페이지
+            </h1>
+            <p class="hero-subtitle">
+                <i class="bi bi-stars"></i> 인공지능과 함께하는 스마트 학습 여정
+            </p>
+            <p class="hero-description">
+                최신 AI 기술을 활용하여 학생 스스로 학습하고 성장하는 자기주도학습 플랫폼입니다.<br>
+                notebookLM, Google Apps Script, 그리고 다양한 교육용 AI 도구를 통해<br>
+                여러분의 학습 경험을 혁신적으로 변화시켜 보세요.
+            </p>
+            <div class="float">
+                <i class="bi bi-chevron-double-down" style="font-size: 3rem;"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cards Section -->
+    <section class="cards-section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="bi bi-mortarboard-fill"></i> 학습 단계 선택
+            </h2>
+            
+            <div class="row justify-content-center">
+                <!-- 기초학습 카드 -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="learning-card basic">
+                        <div>
+                            <div class="card-icon basic">
+                                <i class="bi bi-book-half"></i>
+                            </div>
+                            <h3 class="card-title">기초학습</h3>
+                            <p class="card-description">
+                                AI를 활용하여 <br> 기술의 5대 영역에 대한 <br> 자기주도학습 하기
+                            </p>
+                        </div>
+                        <a href="기초학습.html" class="btn-enter basic">
+                            <i class="bi bi-box-arrow-in-right"></i> 기초학습 시작하기
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 심화학습 카드 -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="learning-card advanced">
+                        <div>
+                            <div class="card-icon advanced">
+                                <i class="bi bi-lightbulb"></i>
+                            </div>
+                            <h3 class="card-title">심화학습(수행평가)</h3>
+                            <p class="card-description">
+                               창의적 문제해결력 향상을 위한 <br> 다양한 주제의 <br> 고차원 사고력 학습
+                            </p>
+                        </div>
+                        <a href="심화학습.html" class="btn-enter advanced">
+                            <i class="bi bi-rocket-takeoff"></i> 심화학습(수행평가) 시작하기
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 발전학습 카드 -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="learning-card development">
+                        <div>
+                            <div class="card-icon development">
+                                <i class="bi bi-trophy"></i>
+                            </div>
+                            <h3 class="card-title">발전학습</h3>
+                            <p class="card-description">
+                                실전 프로젝트로 <br>전문적인 역량 발휘휘
                             </p>
                         </div>
                         <a href="발전학습.html" class="btn-enter development">
