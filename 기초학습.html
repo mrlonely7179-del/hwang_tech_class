@@ -5,392 +5,176 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>기초학습 - AI 자기주도학습</title>
     
-    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    
     <style>
-        * {
-            font-family: 'Noto Sans KR', sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #FEF3C7 0%, #FCD34D 100%);
-            min-height: 100vh;
-            padding: 0;
-            margin: 0;
-        }
-        
-        /* Header */
-        .page-header {
-            background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            position: relative;
-        }
-        
-        .page-header h1 {
-            font-size: 2.5rem;
-            font-weight: 900;
-            margin-bottom: 10px;
-        }
-        
-        .page-header p {
-            font-size: 1.2rem;
-            opacity: 0.95;
-        }
-        
-        .nav-home {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 1000;
-        }
-        
-        .btn-home {
-            background: white;
-            color: #F59E0B;
-            padding: 12px 25px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .btn-home:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            color: #D97706;
-        }
-        
-        /* Content */
-        .content-section {
-            padding: 60px 20px;
-        }
-        
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #92400E;
-            margin-bottom: 50px;
-            text-align: center;
-        }
-        
-        /* Technology Cards */
-        .tech-card {
-            background: white;
-            border-radius: 20px;
-            padding: 40px 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .tech-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-        }
-        
-        .tech-card.manufacturing::before {
-            background: linear-gradient(90deg, #EF4444 0%, #DC2626 100%);
-        }
-        
-        .tech-card.construction::before {
-            background: linear-gradient(90deg, #F59E0B 0%, #D97706 100%);
-        }
-        
-        .tech-card.transportation::before {
-            background: linear-gradient(90deg, #10B981 0%, #059669 100%);
-        }
-        
-        .tech-card.information::before {
-            background: linear-gradient(90deg, #3B82F6 0%, #2563EB 100%);
-        }
-        
-        .tech-card.biotechnology::before {
-            background: linear-gradient(90deg, #8B5CF6 0%, #7C3AED 100%);
-        }
-        
-        .tech-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-        }
-        
-        .tech-icon {
-            width: 120px;
-            height: 120px;
-            border-radius: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: white;
-            margin-bottom: 25px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .tech-icon::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%);
-        }
-        
-        .tech-icon.manufacturing {
-            background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
-        }
-        
-        .tech-icon.construction {
-            background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-        }
-        
-        .tech-icon.transportation {
-            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
-        }
-        
-        .tech-icon.information {
-            background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
-        }
-        
-        .tech-icon.biotechnology {
-            background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
-        }
-        
-        .tech-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #1E293B;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .tech-description {
-            font-size: 1rem;
-            color: #64748B;
-            text-align: center;
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-        
-        .btn-ai-learning {
-            width: 100%;
-            padding: 18px 30px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            border: none;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .btn-ai-learning::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-        
-        .btn-ai-learning:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-        
-        .btn-ai-learning:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            color: white;
-        }
-        
-        .btn-ai-learning.manufacturing {
-            background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
-        }
-        
-        .btn-ai-learning.construction {
-            background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-        }
-        
-        .btn-ai-learning.transportation {
-            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
-        }
-        
-        .btn-ai-learning.information {
-            background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
-        }
-        
-        .btn-ai-learning.biotechnology {
-            background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
-        }
-        
-        .btn-ai-learning.disabled {
-            background: linear-gradient(135deg, #9CA3AF 0%, #6B7280 100%);
-            cursor: not-allowed;
-            opacity: 0.6;
-        }
-        
-        .btn-ai-learning.disabled:hover {
-            transform: none;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .coming-soon {
-            display: inline-block;
-            background: #FEE2E2;
-            color: #991B1B;
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-top: 10px;
-        }
-        
+        * { font-family: 'Noto Sans KR', sans-serif; }
+        body { background: linear-gradient(135deg, #FEF3C7 0%, #FCD34D 100%); min-height: 100vh; margin: 0; padding: 0; }
+        .page-header { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); color: white; padding: 40px 20px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
+        .page-header h1 { font-size: 2.5rem; font-weight: 900; margin-bottom: 10px; }
+        .page-header p { font-size: 1.2rem; opacity: 0.95; }
+        .nav-home { position: fixed; top: 20px; left: 20px; z-index: 1000; }
+        .btn-home { background: white; color: #F59E0B; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 600; box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-home:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.3); color: #D97706; }
+        .content-section { padding: 60px 20px; }
+        .section-title { font-size: 2rem; font-weight: 700; color: #92400E; margin-bottom: 50px; text-align: center; }
+        .tech-card { background: white; border-radius: 20px; padding: 40px 30px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: all 0.4s ease; position: relative; overflow: hidden; }
+        .tech-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; }
+        .tech-card.manufacturing::before { background: linear-gradient(90deg, #EF4444 0%, #DC2626 100%); }
+        .tech-card.construction::before { background: linear-gradient(90deg, #F59E0B 0%, #D97706 100%); }
+        .tech-card.transportation::before { background: linear-gradient(90deg, #10B981 0%, #059669 100%); }
+        .tech-card.information::before { background: linear-gradient(90deg, #3B82F6 0%, #2563EB 100%); }
+        .tech-card.biotechnology::before { background: linear-gradient(90deg, #8B5CF6 0%, #7C3AED 100%); }
+        .tech-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(0,0,0,0.2); }
+        .tech-icon { width: 120px; height: 120px; border-radius: 25px; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white; margin: 0 auto 25px; }
+        .tech-icon.manufacturing { background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%); }
+        .tech-icon.construction { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
+        .tech-icon.transportation { background: linear-gradient(135deg, #10B981 0%, #059669 100%); }
+        .tech-icon.information { background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%); }
+        .tech-icon.biotechnology { background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%); }
+        .tech-title { font-size: 1.8rem; font-weight: 700; color: #1E293B; margin-bottom: 15px; text-align: center; }
+        .tech-description { font-size: 1rem; color: #64748B; text-align: center; margin-bottom: 30px; }
+        .button-group { display: flex; flex-direction: column; gap: 10px; }
+        .btn-ai-learning, .btn-worksheet { width: 100%; padding: 18px 30px; border-radius: 50px; font-size: 1.1rem; font-weight: 700; border: none; color: white; cursor: pointer; transition: all 0.3s ease; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .btn-ai-learning:hover, .btn-worksheet:hover { transform: scale(1.05); box-shadow: 0 10px 30px rgba(0,0,0,0.3); color: white; }
+        .btn-ai-learning.manufacturing { background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%); }
+        .btn-ai-learning.construction { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
+        .btn-ai-learning.transportation { background: linear-gradient(135deg, #10B981 0%, #059669 100%); }
+        .btn-ai-learning.information { background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%); }
+        .btn-ai-learning.biotechnology { background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%); }
+        .btn-worksheet { background: linear-gradient(135deg, #64748B 0%, #475569 100%); }
+        .btn-ai-learning.disabled, .btn-worksheet.disabled { background: linear-gradient(135deg, #9CA3AF 0%, #6B7280 100%); cursor: not-allowed; opacity: 0.6; }
+        .coming-soon { display: inline-block; background: #FEE2E2; color: #991B1B; padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; font-weight: 600; margin-top: 10px; }
         @media (max-width: 768px) {
-            .page-header h1 {
-                font-size: 1.8rem;
-            }
-            
-            .section-title {
-                font-size: 1.5rem;
-            }
-            
-            .nav-home {
-                position: static;
-                margin: 20px;
-            }
-            
-            .tech-icon {
-                width: 100px;
-                height: 100px;
-                font-size: 3rem;
-            }
+            .page-header h1 { font-size: 1.8rem; }
+            .nav-home { position: static; margin: 20px; }
+            .tech-icon { width: 100px; height: 100px; font-size: 3rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Home Button -->
     <div class="nav-home">
-        <a href="index.html" class="btn-home">
-            <i class="bi bi-house-door-fill"></i> 홈으로
-        </a>
+        <a href="index.html" class="btn-home"><i class="bi bi-house-door-fill"></i> 홈으로</a>
     </div>
 
-    <!-- Header -->
     <header class="page-header">
         <h1><i class="bi bi-book-half"></i> 기초학습</h1>
         <p>다양한 기술 분야를 AI와 함께 학습해보세요</p>
     </header>
 
-    <!-- Content -->
     <section class="content-section">
         <div class="container">
-            <h2 class="section-title">
-                <i class="bi bi-gear-fill"></i> 기술 영역 선택
-            </h2>
+            <h2 class="section-title"><i class="bi bi-gear-fill"></i> 기술 영역 선택</h2>
             
             <div class="row">
-                <!-- 제조기술 -->
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="tech-card manufacturing">
-                        <div class="tech-icon manufacturing">
-                            <i class="bi bi-gear-wide-connected"></i>
-                        </div>
+                        <div class="tech-icon manufacturing"><i class="bi bi-gear-wide-connected"></i></div>
                         <h3 class="tech-title">제조기술</h3>
-                        <p class="tech-description">
-                            제품을 설계하고 생산하는<br>제조 기술을 배워보세요
-                        </p>
-                        <a href="https://notebooklm.google.com/notebook/597e29bf-d7af-4365-aebe-a433ee30129c" 
-                           target="_blank" 
-                           class="btn-ai-learning manufacturing">
-                            <i class="bi bi-stars"></i>
-                            <span>AI 자기주도학습 시작</span>
-                            <i class="bi bi-arrow-right-circle-fill"></i>
-                        </a>
+                        <p class="tech-description">제품을 설계하고 생산하는<br>제조 기술을 배워보세요</p>
+                        <div class="button-group">
+                            <a href="https://notebooklm.google.com/notebook/597e29bf-d7af-4365-aebe-a433ee30129c" target="_blank" class="btn-ai-learning manufacturing">
+                                <i class="bi bi-stars"></i><span>AI 자기주도학습 시작</span>
+                            </a>
+                            <button class="btn-worksheet" onclick="openWorksheet('manufacturing')">
+                                <i class="bi bi-file-earmark-text"></i><span>활동지 학습</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 건설기술 -->
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="tech-card construction">
-                        <div class="tech-icon construction">
-                            <i class="bi bi-building"></i>
-                        </div>
+                        <div class="tech-icon construction"><i class="bi bi-building"></i></div>
                         <h3 class="tech-title">건설기술</h3>
-                        <p class="tech-description">
-                            건축물과 구조물을 설계하고<br>시공하는 기술을 익혀보세요
-                        </p>
-                        <a href="https://notebooklm.google.com/notebook/dbf0773c-ac2f-4ecf-9f9b-2bed7a85cc14" 
-                           target="_blank" 
-                           class="btn-ai-learning construction">
-                            <i class="bi bi-stars"></i>
-                            <span>AI 자기주도학습 시작</span>
-                            <i class="bi bi-arrow-right-circle-fill"></i>
-                        </a>
+                        <p class="tech-description">건축물과 구조물을 설계하고<br>시공하는 기술을 익혀보세요</p>
+                        <div class="button-group">
+                            <a href="https://notebooklm.google.com/notebook/dbf0773c-ac2f-4ecf-9f9b-2bed7a85cc14" target="_blank" class="btn-ai-learning construction">
+                                <i class="bi bi-stars"></i><span>AI 자기주도학습 시작</span>
+                            </a>
+                            <button class="btn-worksheet" onclick="openWorksheet('construction')">
+                                <i class="bi bi-file-earmark-text"></i><span>활동지 학습</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 수송기술 -->
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="tech-card transportation">
-                        <div class="tech-icon transportation">
-                            <i class="bi bi-truck-front"></i>
-                        </div>
+                        <div class="tech-icon transportation"><i class="bi bi-truck-front"></i></div>
                         <h3 class="tech-title">수송기술</h3>
-                        <p class="tech-description">
-                            사람과 물자를 운송하는<br>다양한 수송 기술을 탐구해보세요
-                        </p>
-                        <button class="btn-ai-learning transportation disabled" disabled>
-                            <i class="bi bi-hourglass-split"></i>
-                            <span>준비 중</span>
-                            <i class="bi bi-lock-fill"></i>
-                        </button>
+                        <p class="tech-description">사람과 물자를 운송하는<br>다양한 수송 기술을 탐구해보세요</p>
+                        <div class="button-group">
+                            <button class="btn-ai-learning transportation disabled" disabled>
+                                <i class="bi bi-hourglass-split"></i><span>준비 중</span>
+                            </button>
+                            <button class="btn-worksheet disabled" disabled>
+                                <i class="bi bi-lock-fill"></i><span>준비 중</span>
+                            </button>
+                        </div>
                         <span class="coming-soon">곧 공개됩니다</span>
                     </div>
                 </div>
 
-                <!-- 정보통신기술 -->
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="tech-card information">
-                        <div class="tech-icon information">
-                            <i class="bi bi-wifi"></i>
-                        </div>
+                        <div class="tech-icon information"><i class="bi bi-wifi"></i></div>
                         <h3 class="tech-title">정보통신기술</h3>
-                        <p class="tech-description">
-                            정보를 처리하고 전달하는<br>IT 기술을 학습해보세요
-                        </p>
-                        <button class="btn-ai-learning information disable
+                        <p class="tech-description">정보를 처리하고 전달하는<br>IT 기술을 학습해보세요</p>
+                        <div class="button-group">
+                            <button class="btn-ai-learning information disabled" disabled>
+                                <i class="bi bi-hourglass-split"></i><span>준비 중</span>
+                            </button>
+                            <button class="btn-worksheet disabled" disabled>
+                                <i class="bi bi-lock-fill"></i><span>준비 중</span>
+                            </button>
+                        </div>
+                        <span class="coming-soon">곧 공개됩니다</span>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="tech-card biotechnology">
+                        <div class="tech-icon biotechnology"><i class="bi bi-heart-pulse"></i></div>
+                        <h3 class="tech-title">생명기술</h3>
+                        <p class="tech-description">생명과학을 활용한<br>바이오 기술을 탐구해보세요</p>
+                        <div class="button-group">
+                            <button class="btn-ai-learning biotechnology disabled" disabled>
+                                <i class="bi bi-hourglass-split"></i><span>준비 중</span>
+                            </button>
+                            <button class="btn-worksheet disabled" disabled>
+                                <i class="bi bi-lock-fill"></i><span>준비 중</span>
+                            </button>
+                        </div>
+                        <span class="coming-soon">곧 공개됩니다</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+        
+        function openWorksheet(techType) {
+            alert('구글폼을 생성하고 있습니다. 잠시만 기다려주세요...');
+            
+            fetch(SCRIPT_URL + '?action=createForm&type=' + techType)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        window.open(data.formUrl, '_blank');
+                    } else {
+                        alert('오류: ' + data.error);
+                    }
+                })
+                .catch(error => {
+                    alert('폼 생성 중 오류가 발생했습니다: ' + error);
+                });
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
