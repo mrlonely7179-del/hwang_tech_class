@@ -154,26 +154,13 @@
         </div>
     </section>
 
-    <script>
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzZ9yT4PdeBBJuq4RoxJrBUWX0rn0C7z1eyOYaPTcPOJP5nKDIo82qsKro6OZ77TYPt/exec';
-        
-        function openWorksheet(techType) {
-            alert('구글폼을 생성하고 있습니다. 잠시만 기다려주세요...');
-            
-            fetch(SCRIPT_URL + '?action=createForm&type=' + techType)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        window.open(data.formUrl, '_blank');
-                    } else {
-                        alert('오류: ' + data.error);
-                    }
-                })
-                .catch(error => {
-                    alert('폼 생성 중 오류가 발생했습니다: ' + error);
-                });
-        }
-    </script>
+<script>
+    function openWorksheet(techType) {
+        // Apps Script URL 직접 열기
+        const url = 'YOUR_SCRIPT_URL_HERE?action=createForm&type=' + techType;
+        window.open(url, '_blank');
+    }
+</script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
