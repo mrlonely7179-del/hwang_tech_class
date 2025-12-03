@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기초학습 - AI 자기주도학습</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FCD34D 100%);
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+        
+        /* Header */
+        .page-header {
+            background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+        
+        .nav-home {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+        
+        .btn-home {
+            background: white;
+            color: #F59E0B;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-home:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            color: #D97706;
+        }
+        
+        /* Content */
+        .content-section {
+            padding: 60px 20px;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #92400E;
+            margin-bottom: 30px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .category-box {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .category-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #92400E;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #FCD34D;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .skill-tag {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FCD34D 100%);
+            color: #92400E;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .skill-tag:hover {
+            border-color: #F59E0B;
+            transform: scale(1.05);
+        }
+        
+        .ai-feature-card {
+            background: linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 5px solid #3B82F6;
+            transition: all 0.3s ease;
+        }
+        
+        .ai-feature-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+        }
+        
+        .ai-feature-card h5 {
+            color: #1E40AF;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .ai-feature-card p {
+            color: #1E3A8A;
+            margin: 0;
+            line-height: 1.6;
+        }
+        
+        .ai-badge {
+            background: linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .tool-item {
+            background: #FEF3C7;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            color: #92400E;
+            border: 2px solid #FCD34D;
+            transition: all 0.3s ease;
+        }
+        
+        .tool-item:hover {
+            background: #FCD34D;
+            transform: scale(1.05);
+        }
+        
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .nav-home {
+                position: static;
+                margin: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Home Button -->
+    <div class="nav-home">
+        <a href="index.html" class="btn-home">
+            <i class="bi bi-house-door-fill"></i> 홈으로
+        </a>
+    </div>
+
+    <!-- Header -->
+    <header class="page-header">
+        <h1><i class="bi bi-book-half"></i> 기초학습</h1>
+        <p>자기주도학습의 기본 기술을 익히고 AI 도구를 활용해보세요</p>
+    </header>
+
+    <!-- Content -->
+    <section class="content-section">
+        <div class="container">
+            <!-- 기초기술 섹션 -->
+            <div class="category-box">
+                <h2 class="category-title">
+                    <i class="bi bi-puzzle-fill"></i> 기초기술
+                </h2>
+                <div class="skill-tags">
+                    <span class="skill-tag"><i class="bi bi-upload"></i> 제출기술</span>
+                    <span class="skill-tag"><i class="bi bi-search"></i> 검색기술</span>
+                    <span class="skill-tag"><i class="bi bi-pencil-square"></i> 수정기술</span>
+                    <span class="skill-tag"><i class="bi bi-chat-dots"></i> 질문통신기술</span>
+                    <span class="skill-tag"><i class="bi bi-magic"></i> 생성기술</span>
+                </div>
+            </div>
+
+            <!-- AI 활용 섹션 -->
+            <div class="category-box">
+                <h2 class="category-title">
+                    <i class="bi bi-robot"></i> AI 학습 도구
+                    <span class="ai-badge"><i class="bi bi-stars"></i> AI</span>
+                </h2>
+
+                <!-- notebookLM 기본 -->
+                <div class="ai-feature-card">
+                    <h5>
+                        <i class="bi bi-file-earmark-text"></i> 
+                        로컬 notebookLM을 활용한 비서식 텍스트 자료
+                    </h5>
+                    <p>나만의 AI 비서로 학습 자료를 체계적으로 정리하고 관리하세요</p>
+                </div>
+
+                <div class="ai-feature-card">
+                    <h5>
+                        <i class="bi bi-journal-code"></i> 
+                        notebookLM과 연결하여 자기주도 학습
+                    </h5>
+                    <p>AI와 함께 학습 노트를 만들고 개인화된 학습 경로를 설정하세요</p>
+                </div>
+
+                <!-- notebookLM 기능 활용 -->
+                <div class="ai-feature-card">
+                    <h5>
+                        <i class="bi bi-lightning-charge-fill"></i> 
+                        notebookLM 기능 활용 자기주도 학습
+                    </h5>
+                    <p>다양한 학습 도구를 활용하여 효과적으로 학습하세요</p>
+                    <div class="tools-grid">
+                        <div class="tool-item">
+                            <i class="bi bi-diagram-3"></i> 마인드맵
+                        </div>
+                        <div class="tool-item">
+                            <i class="bi bi-question-circle"></i> 퀴즈
+                        </div>
+                        <div class="tool-item">
+                            <i class="bi bi-card-heading"></i> 플래시카드
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 교사 제공 자료 -->
+                <div class="ai-feature-card">
+                    <h5>
+                        <i class="bi bi-clock-history"></i> 
+                        교사가 미리 제시한 출처 자료 활용
+                    </h5>
+                    <p>선생님이 준비한 신뢰할 수 있는 학습 자료로 공부하세요</p>
+                </div>
+            </div>
+
+            <!-- 학습지 및 설문 섹션 -->
+            <div class="category-box">
+                <h2 class="category-title">
+                    <i class="bi bi-clipboard-check"></i> 학습지 및 평가 도구
+                    <span class="ai-badge"><i class="bi bi-stars"></i> AI</span>
+                </h2>
+
+                <div class="ai-feature-card">
+                    <h5>
+                        <i class="bi bi-file-earmark-ruled"></i> 
+                        학습지를 바탕으로 구글 설문지 자동 작성
+                    </h5>
+                    <p>AI가 학습지를 분석하여 자동으로 설문지를 생성합니다</p>
+                </div>
+
+                <div class="ai-feature-card">
+                    <h5>
+                        <i class="bi bi-link-45deg"></i> 
+                        출처가 명확한 설문 또는 구글 설문지 자동 작성
+                    </h5>
+                    <p>신뢰할 수 있는 출처 기반의 평가 도구를 만들어보세요</p>
+                </div>
+
+                <div class="ai-feature-card">
+                    <h5>
+                        <i class="bi bi-send-check"></i> 
+                        제출, 채점, 고차원 사고력 문제 작성 및 과제 활용도 연습
+                    </h5>
+                    <p>제출부터 채점까지 전 과정을 AI와 함께 경험하세요</p>
+                </div>
+
+                <div class="ai-feature-card">
+                    <h5>
+                        <i class="bi bi-graph-up-arrow"></i> 
+                        제출 수업 관리하며 고차원 사고력 제안 및 과제통계 연습
+                    </h5>
+                    <p>학습 데이터를 분석하고 더 깊이 있는 사고력을 키워보세요</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
