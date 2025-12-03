@@ -1,191 +1,348 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>중학교 기술과 수업</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    .quiz-section { margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd; }
-    textarea { width: 100%; height: 150px; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; resize: vertical; margin-top: 10px; }
-    .quiz-btn { background-color: #2ea44f; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-size: 14px; cursor: pointer; margin-top: 10px; width: 100%; }
-    .performance-btn { background-color: #0969da; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-size: 14px; cursor: pointer; margin-top: 5px; width: 100%; }
-    .quiz-btn:disabled { background-color: #94d3a2; cursor: not-allowed; }
-    .status { margin-top: 15px; padding: 12px; border-radius: 6px; display: none; font-size: 14px; }
-    .success { background-color: #f0fff4; border: 1px solid #2ea44f; color: #1a7f37; }
-    .error { background-color: #ffebe9; border: 1px solid #cf222e; color: #cf222e; }
-    .info-box { background-color: #fff3cd; border: 1px solid #ffc107; padding: 12px; border-radius: 6px; margin-bottom: 20px; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자기주도학습을 위한 기술 활용 페이지</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #00C896;
+            --secondary-color: #4F46E5;
+            --accent-color: #F59E0B;
+            --danger-color: #EF4444;
+            --light-bg: #F8FAFC;
+            --dark-text: #1E293B;
+        }
+        
+        * {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+        
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .page-header {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .page-header .subtitle {
+            color: #64748B;
+            font-size: 1.1rem;
+        }
+        
+        .section-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .badge-custom {
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin: 5px;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .badge-custom:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .badge-skill { background: #DBEAFE; color: #1E40AF; }
+        .badge-application { background: #FEF3C7; color: #92400E; }
+        .badge-maintenance { background: #FCE7F3; color: #9F1239; }
+        .badge-ai { background: #F3E8FF; color: #6B21A8; }
+        
+        .feature-box {
+            background: var(--light-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 10px 0;
+            border-left: 4px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-box:hover {
+            background: #E0F2FE;
+            border-left-color: var(--secondary-color);
+        }
+        
+        .feature-box h5 {
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .feature-box p {
+            color: #475569;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+        
+        .ai-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+        }
+        
+        .category-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #059669 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,200,150,0.3);
+        }
+        
+        .info-card {
+            background: white;
+            border: 2px solid #E2E8F0;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .info-card:hover {
+            border-color: var(--primary-color);
+            background: #F0FDFA;
+        }
+        
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+        
+        .footer-section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .footer-section h4 {
+            color: var(--secondary-color);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .btn-custom {
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            border: none;
+            transition: all 0.3s ease;
+            margin: 5px;
+        }
+        
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #059669 100%);
+            color: white;
+        }
+        
+        .btn-primary-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,200,150,0.4);
+        }
+        
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.2rem;
+            }
+            
+            body {
+                padding: 10px 0;
+            }
+        }
+    </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="#">중학교 기술과</a>
-    </div>
-  </nav>
-
-  <header class="bg-primary text-white text-center py-5">
-    <h1>기술과 수업 홈페이지</h1>
-    <p class="lead">건설기술 · 제조기술 · 생명기술 · 수송기술에 대해 배우는 공간</p>
-  </header>
-
-  <section class="container my-5">
-    <div class="info-box">
-      <strong>⚠️ 첫 사용 시 필수 설정:</strong> 첫 번째 퀴즈 생성 후, Google Drive에서 해당 퀴즈를 열어 
-      <strong>설정(⚙️) → 퀴즈 → "제출 후 바로 공개"</strong>를 선택하세요. 
-      이후 모든 퀴즈에 자동 적용됩니다!
-    </div>
-
-    <h2 class="mb-4">기술 분야 탐색하기</h2>
-    <div class="row g-4">
-      
-      <div class="col-md-6 col-lg-3">
-        <div class="card shadow h-100">
-          <div class="card-body">
-            <h5 class="card-title">건설기술</h5>
-            <p class="card-text">건설 및 구조물 관련 기술을 탐구합니다.</p>
-            <a href="https://notebooklm.google.com/notebook/3b522e84-4c4f-4ca3-8a6b-a5b5c232a36d" target="_blank" class="btn btn-success w-100">NotebookLM 바로가기</a>
-            
-            <div class="quiz-section">
-              <small class="text-muted">퀴즈 생성하기</small>
-              <textarea id="source1" placeholder="소스 텍스트를 입력하세요..."></textarea>
-              <button class="quiz-btn" onclick="generateQuiz(1)">퀴즈 생성</button>
-              <button class="performance-btn" onclick="openPerformanceForm()">수행평가 바로가기</button>
-              <div id="status1" class="status"></div>
-            </div>
-          </div>
+    <div class="container main-container">
+        <!-- 페이지 헤더 -->
+        <div class="page-header animate__animated animate__fadeInDown">
+            <h1><i class="bi bi-stars"></i> 자기주도학습을 위한 기술 활용 페이지 (학생용)</h1>
+            <p class="subtitle">AI와 함께하는 스마트한 학습 여정</p>
         </div>
-      </div>
 
-      <div class="col-md-6 col-lg-3">
-        <div class="card shadow h-100">
-          <div class="card-body">
-            <h5 class="card-title">제조기술</h5>
-            <p class="card-text">제조 공정과 기계 관련 기술을 배웁니다.</p>
-            <a href="https://notebooklm.google.com/notebook/3b522e84-4c4f-4ca3-8a6b-a5b5c232a36d" target="_blank" class="btn btn-info w-100">NotebookLM 바로가기</a>
-            
-            <div class="quiz-section">
-              <small class="text-muted">퀴즈 생성하기</small>
-              <textarea id="source2" placeholder="소스 텍스트를 입력하세요..."></textarea>
-              <button class="quiz-btn" onclick="generateQuiz(2)">퀴즈 생성</button>
-              <button class="performance-btn" onclick="openPerformanceForm()">수행평가 바로가기</button>
-              <div id="status2" class="status"></div>
+        <!-- 메인 카테고리 -->
+        <div class="row">
+            <!-- 기초학습 섹션 -->
+            <div class="col-lg-4 col-md-12 mb-4">
+                <div class="category-header">
+                    <i class="bi bi-book-half"></i> 기초학습
+                </div>
+                
+                <div class="section-card">
+                    <div class="section-title">
+                        <i class="bi bi-puzzle"></i> 기본 기술
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="badge-custom badge-skill">제출기술</span>
+                            <span class="badge-custom badge-skill">검색기술</span>
+                            <span class="badge-custom badge-skill">수정기술</span>
+                        </div>
+                        <div class="col-md-12">
+                            <span class="badge-custom badge-skill">질문통신기</span>
+                            <span class="badge-custom badge-skill">생성기술</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <div class="section-title">
+                        <i class="bi bi-robot"></i> AI 학습 도구
+                        <span class="ai-badge"><i class="bi bi-stars"></i> AI</span>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <h5><i class="bi bi-file-earmark-text"></i> 로컬 notebookLM을 활용한 비서식 텍스트 자료</h5>
+                        <p>나만의 AI 비서로 학습 자료를 정리하세요</p>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <h5><i class="bi bi-journal-code"></i> notebookLM과 연결하여 자기주도 학습</h5>
+                        <p>체계적인 학습 노트를 만들어보세요</p>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <h5><i class="bi bi-lightning-charge"></i> notebookLM 기능 활용 자기주도 학습</h5>
+                        <div class="mt-2">
+                            <span class="badge-custom badge-ai">마인드맵</span>
+                            <span class="badge-custom badge-ai">퀴즈</span>
+                            <span class="badge-custom badge-ai">플래시카드 등</span>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h6><i class="bi bi-clock-history"></i> 교사가 미리 제시한 주어진 출처 자료</h6>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <h5><i class="bi bi-pencil-square"></i> 학습지를 바탕으로 구글 설문지 자동 작성</h5>
+                        <p>효율적인 자가 평가 시스템</p>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <h5><i class="bi bi-diagram-3"></i> 출처가 명 끊게 설문 또는 구글 설문지 자동 작성</h5>
+                        <p>신뢰할 수 있는 학습 도구</p>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <h5><i class="bi bi-file-richtext"></i> 제출, 채점, 고차원 사고력 문제 작성 및 과제 활용도 연습</h5>
+                        <p>종합적인 학습 관리</p>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <h5><i class="bi bi-graph-up"></i> 제출 수업 관리하며 고차원 사고력 제안 및 과제통계 연습</h5>
+                        <p>데이터 기반 학습 분석</p>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="col-md-6 col-lg-3">
-        <div class="card shadow h-100">
-          <div class="card-body">
-            <h5 class="card-title">생명기술</h5>
-            <p class="card-text">생명과학 및 바이오 관련 기술을 알아봅니다.</p>
-            <a href="https://notebooklm.google.com/notebook/3b522e84-4c4f-4ca3-8a6b-a5b5c232a36d" target="_blank" class="btn btn-warning w-100">NotebookLM 바로가기</a>
-            
-            <div class="quiz-section">
-              <small class="text-muted">퀴즈 생성하기</small>
-              <textarea id="source3" placeholder="소스 텍스트를 입력하세요..."></textarea>
-              <button class="quiz-btn" onclick="generateQuiz(3)">퀴즈 생성</button>
-              <button class="performance-btn" onclick="openPerformanceForm()">수행평가 바로가기</button>
-              <div id="status3" class="status"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-3">
-        <div class="card shadow h-100">
-          <div class="card-body">
-            <h5 class="card-title">수송기술</h5>
-            <p class="card-text">교통 및 수송수단의 기술을 살펴봅니다.</p>
-            <a href="https://notebooklm.google.com/notebook/3b522e84-4c4f-4ca3-8a6b-a5b5c232a36d" target="_blank" class="btn btn-danger w-100">NotebookLM 바로가기</a>
-            
-            <div class="quiz-section">
-              <small class="text-muted">퀴즈 생성하기</small>
-              <textarea id="source4" placeholder="소스 텍스트를 입력하세요..."></textarea>
-              <button class="quiz-btn" onclick="generateQuiz(4)">퀴즈 생성</button>
-              <button class="performance-btn" onclick="openPerformanceForm()">수행평가 바로가기</button>
-              <div id="status4" class="status"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <footer class="bg-dark text-white text-center py-3 mt-5">
-    &copy; 2025 중학교 기술과. 모든 권리 보유.
-  </footer>
-  
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script>
-    const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyKuCjiYkeH60ppMvxfkn_dO-pGfGLiWhEhvVlG6N5OvYk3hwkjRMRB9mU1Zi4rnB97/exec";
-
-    function generateQuiz(cardNumber) {
-        const source = document.getElementById('source' + cardNumber).value;
-        const btn = event.target;
-        const statusDiv = document.getElementById('status' + cardNumber);
-
-        if (!source.trim()) {
-            alert("소스 텍스트를 입력해주세요!");
-            return;
-        }
-
-        btn.disabled = true;
-        btn.innerText = "AI가 분석 중... ⏳";
-        statusDiv.style.display = "none";
-
-        fetch(GAS_WEB_APP_URL, {
-            method: "POST",
-            mode: "cors",
-            headers: {"Content-Type": "text/plain;charset=utf-8"},
-            body: JSON.stringify({ sourceText: source })
-        })
-        .then(response => response.json())
-        .then(data => {
-            btn.disabled = false;
-            btn.innerText = "퀴즈 생성";
-            statusDiv.style.display = "block";
-
-            if (data.result === 'success') {
-                statusDiv.className = 'status success';
-                statusDiv.innerHTML = '✅ 퀴즈 생성 완료!<br><a href="' + data.url + '" target="_blank" style="color: #1a7f37; font-weight: bold;">👉 퀴즈 풀기</a>';
-            } else {
-                throw new Error(data.message);
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            btn.disabled = false;
-            btn.innerText = "퀴즈 생성";
-            statusDiv.style.display = "block";
-            statusDiv.className = 'status error';
-            statusDiv.innerText = "오류: " + error.message;
-        });
-    }
-
-    function openPerformanceForm() {
-      fetch(GAS_WEB_APP_URL, {
-        method: "POST",
-        mode: "cors",
-        headers: {"Content-Type": "text/plain;charset=utf-8"},
-        body: JSON.stringify({ action: 'getPerformanceForm' })
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.result === 'success') {
-          window.open(data.url, '_blank');
-        } else {
-          alert('오류: ' + data.message);
-        }
-      })
-      .catch(error => {
-        alert('오류: ' + error.message);
-      });
-    }
-  </script>
-</body>
-</html>
+            <!-- 심화학습 섹션 -->
+            <div class="col-lg-4 col-md-12 mb-4">
+                <div class="category-header">
+                    <i class="bi bi-lightbulb"></i> 심화학습
+                </div>
+                
+                <div class="section-card">
+                    <div class="section-title">
+                        <i class="bi bi-stars"></i> AI 활용 학습
+                        <span class="ai-badge"><i class="bi bi-stars"></i> AI</span>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <h5><i class="bi bi-book"></i> 글쓰기와 첨삭 보기</h5>
+                        <p>AI와 함께 글쓰기 실력 향상</p>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <h5><i class="bi bi-clipboard-check"></i> 보완점 안내와 고차원 질문에 자동 작성</h5>
+                        <p>맞춤형 피드백 시스템</p>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <h5><i class="bi bi-chat-dots"></i> 마케팅 요구사항 반영 학습 디지털 기기</h5>
+                        <p>실용적 학습 경험</p>
+                    </div>
+                    
+                    <div class="feature-box">
+                        <h5><i class="bi bi-globe"></i> 쌍
