@@ -26,10 +26,10 @@
             justify-content: center;
         }
 
-        /* 카드 너비 310px로 확대 */
+        /* 카드 너비 250px로 조정 */
         .tech-card { 
             position: relative;
-            width: 310px;
+            width: 250px;
             border-radius: 26px;
             overflow: hidden;
             box-shadow: 0 16px 40px rgba(15, 23, 42, 0.18);
@@ -50,26 +50,31 @@
             background-image: linear-gradient(to bottom, rgba(15,23,42,0.1), rgba(15,23,42,0.45));
         }
 
-        /* 제조기술 이미지가 확실히 보이도록, 공개 샘플 이미지 사용 */
+        /* 각 영역별 새로운 배경 이미지 */
         .tech-card-bg.manufacturing {
-            background-image: url("https://images.pexels.com/photos/39615/wrench-maintain-repair-tools-39615.jpeg?auto=compress&cs=tinysrgb&w=800");
+            /* 자동차 제조 공장 */
+            background-image: url("https://images.pexels.com/photos/1149831/pexels-photo-1149831.jpeg?auto=compress&cs=tinysrgb&w=800");
         }
         .tech-card-bg.construction {
-            background-image: url("https://images.pexels.com/photos/585419/pexels-photo-585419.jpeg?auto=compress&cs=tinysrgb&w=800");
+            /* 초고층 빌딩 */
+            background-image: url("https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&cs=tinysrgb&w=800");
         }
         .tech-card-bg.transportation {
-            background-image: url("https://images.pexels.com/photos/799443/pexels-photo-799443.jpeg?auto=compress&cs=tinysrgb&w=800");
+            /* 드론 */
+            background-image: url("https://images.pexels.com/photos/442587/pexels-photo-442587.jpeg?auto=compress&cs=tinysrgb&w=800");
         }
         .tech-card-bg.information {
-            background-image: url("https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=800");
+            /* 스마트폰으로 전화하는 모습 */
+            background-image: url("https://images.pexels.com/photos/699122/pexels-photo-699122.jpeg?auto=compress&cs=tinysrgb&w=800");
         }
         .tech-card-bg.biotechnology {
-            background-image: url("https://images.pexels.com/photos/2280548/pexels-photo-2280548.jpeg?auto=compress&cs=tinysrgb&w=800");
+            /* 유전자 재조합 / DNA 연구 */
+            background-image: url("https://images.pexels.com/photos/256262/pexels-photo-256262.jpeg?auto=compress&cs=tinysrgb&w=800");
         }
 
         .tech-card-body {
             background: #ffffff;
-            padding: 30px 26px 26px 26px;
+            padding: 30px 24px 26px 24px;
         }
 
         .tech-icon { 
@@ -174,9 +179,8 @@
         <div class="container">
             <h2 class="section-title"><i class="bi bi-gear-fill"></i> 기술 영역 선택</h2>
             
-            <!-- g-4 : 이전 g-3보다 약간 더 넓은 간격 (Bootstrap 거터 단위 한 단계 증가) -->
             <div class="row justify-content-center g-4">
-                <!-- 제조기술 -->
+                <!-- 제조기술: 자동차 제조 공장 -->
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="tech-card-wrapper">
                         <article class="tech-card">
@@ -203,7 +207,7 @@
                     </div>
                 </div>
 
-                <!-- 건설기술 -->
+                <!-- 건설기술: 초고층 빌딩 -->
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="tech-card-wrapper">
                         <article class="tech-card">
@@ -230,7 +234,7 @@
                     </div>
                 </div>
 
-                <!-- 수송기술 -->
+                <!-- 수송기술: 드론 -->
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="tech-card-wrapper">
                         <article class="tech-card">
@@ -252,14 +256,11 @@
                                         <i class="bi bi-lock-fill"></i><span>준비 중</span>
                                     </button>
                                 </div>
-                                <span class="coming-soon">곧 공개됩니다</span>
                             </div>
                         </article>
                     </div>
                 </div>
-
-                <!-- 정보통신기술 -->
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="tech-card-wrapper">
                         <article class="tech-card">
                             <div class="tech-card-bg information"></div>
@@ -286,7 +287,6 @@
                     </div>
                 </div>
 
-                <!-- 생명기술 (아래 줄로 내려갈 수 있음) -->
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="tech-card-wrapper">
                         <article class="tech-card">
