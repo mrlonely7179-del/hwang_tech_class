@@ -21,31 +21,28 @@
         .content-section { padding: 60px 20px; }
         .section-title { font-size: 2rem; font-weight: 700; color: #92400E; margin-bottom: 40px; text-align: center; }
 
-        /* 카드 래퍼: 가운데 정렬 */
         .tech-card-wrapper {
             display: flex;
             justify-content: center;
         }
 
-        /* 카드 모양 + 배경 이미지 + 오버레이 */
+        /* 카드 너비 310px로 확대 */
         .tech-card { 
             position: relative;
-            width: 230px;                 /* 고정 폭 */
+            width: 310px;
             border-radius: 26px;
             overflow: hidden;
             box-shadow: 0 16px 40px rgba(15, 23, 42, 0.18);
             background-color: #ffffff;
         }
 
-        /* 배경이미지 영역 */
         .tech-card-bg {
             position: relative;
-            height: 120px;
+            height: 140px;
             background-size: cover;
             background-position: center;
         }
 
-        /* 배경 위 그라디언트 오버레이 */
         .tech-card-bg::after {
             content: "";
             position: absolute;
@@ -53,39 +50,38 @@
             background-image: linear-gradient(to bottom, rgba(15,23,42,0.1), rgba(15,23,42,0.45));
         }
 
-        /* 카드별 배경 이미지 (원하는 이미지를 url(...) 안에 넣으시면 됩니다) */
+        /* 제조기술 이미지가 확실히 보이도록, 공개 샘플 이미지 사용 */
         .tech-card-bg.manufacturing {
-            background-image: url("https://images.pexels.com/photos/39615/wrench-maintain-repair-tools-39615.jpeg");
+            background-image: url("https://images.pexels.com/photos/39615/wrench-maintain-repair-tools-39615.jpeg?auto=compress&cs=tinysrgb&w=800");
         }
         .tech-card-bg.construction {
-            background-image: url("https://images.pexels.com/photos/585419/pexels-photo-585419.jpeg");
+            background-image: url("https://images.pexels.com/photos/585419/pexels-photo-585419.jpeg?auto=compress&cs=tinysrgb&w=800");
         }
         .tech-card-bg.transportation {
-            background-image: url("https://images.pexels.com/photos/799443/pexels-photo-799443.jpeg");
+            background-image: url("https://images.pexels.com/photos/799443/pexels-photo-799443.jpeg?auto=compress&cs=tinysrgb&w=800");
         }
         .tech-card-bg.information {
-            background-image: url("https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg");
+            background-image: url("https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=800");
         }
         .tech-card-bg.biotechnology {
-            background-image: url("https://images.pexels.com/photos/2280548/pexels-photo-2280548.jpeg");
+            background-image: url("https://images.pexels.com/photos/2280548/pexels-photo-2280548.jpeg?auto=compress&cs=tinysrgb&w=800");
         }
 
-        /* 실제 내용 영역 */
         .tech-card-body {
             background: #ffffff;
-            padding: 28px 22px 24px 22px;
+            padding: 30px 26px 26px 26px;
         }
 
         .tech-icon { 
-            width: 72px; 
-            height: 72px; 
+            width: 76px; 
+            height: 76px; 
             border-radius: 20px; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            font-size: 2.4rem; 
+            font-size: 2.6rem; 
             color: white; 
-            margin: -46px auto 18px auto;      /* 배경 위로 살짝 겹치게 */
+            margin: -48px auto 18px auto;
             box-shadow: 0 8px 20px rgba(15, 23, 42, 0.35);
         }
         .tech-icon.manufacturing { background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%); }
@@ -95,16 +91,15 @@
         .tech-icon.biotechnology { background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%); }
 
         .tech-title { 
-            font-size: 1.5rem; 
+            font-size: 1.6rem; 
             font-weight: 800; 
             color: #0F172A; 
             margin-bottom: 12px; 
             text-align: center; 
         }
 
-        /* 설명: 줄 수를 예측하기 쉽도록 4줄로 직접 줄바꿈 */
         .tech-description { 
-            font-size: 0.94rem; 
+            font-size: 0.96rem; 
             color: #64748B; 
             text-align: center; 
             margin-bottom: 20px; 
@@ -128,7 +123,7 @@
             align-items: center; 
             justify-content: center; 
             gap: 6px; 
-            white-space: nowrap;           /* 버튼 글자는 줄바꿈 방지 */
+            white-space: nowrap;
         }
         .btn-ai-learning:hover, .btn-worksheet:hover { 
             transform: translateY(-2px); 
@@ -159,7 +154,6 @@
             margin-top: 10px; 
         }
 
-        /* 스마트폰용(기본 레이아웃 유지) */
         @media (max-width: 768px) {
             .page-header h1 { font-size: 1.8rem; }
             .nav-home { position: static; margin: 20px; }
@@ -180,10 +174,10 @@
         <div class="container">
             <h2 class="section-title"><i class="bi bi-gear-fill"></i> 기술 영역 선택</h2>
             
-            <!-- g-3 로 카드 간격을 넉넉하게 확보 -->
-            <div class="row justify-content-center g-3">
+            <!-- g-4 : 이전 g-3보다 약간 더 넓은 간격 (Bootstrap 거터 단위 한 단계 증가) -->
+            <div class="row justify-content-center g-4">
                 <!-- 제조기술 -->
-                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="tech-card-wrapper">
                         <article class="tech-card">
                             <div class="tech-card-bg manufacturing"></div>
@@ -193,7 +187,7 @@
                                 <p class="tech-description">
                                     제품을 설계하고<br>
                                     재료를 가공하여<br>
-                                    조립·검사 과정을 거쳐<br>
+                                    조립과 검사를 거쳐<br>
                                     완성품을 만드는 기술입니다
                                 </p>
                                 <div class="button-group">
@@ -210,7 +204,7 @@
                 </div>
 
                 <!-- 건설기술 -->
-                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="tech-card-wrapper">
                         <article class="tech-card">
                             <div class="tech-card-bg construction"></div>
@@ -237,7 +231,7 @@
                 </div>
 
                 <!-- 수송기술 -->
-                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="tech-card-wrapper">
                         <article class="tech-card">
                             <div class="tech-card-bg transportation"></div>
@@ -265,7 +259,7 @@
                 </div>
 
                 <!-- 정보통신기술 -->
-                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="tech-card-wrapper">
                         <article class="tech-card">
                             <div class="tech-card-bg information"></div>
@@ -292,8 +286,8 @@
                     </div>
                 </div>
 
-                <!-- 생명기술 -->
-                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                <!-- 생명기술 (아래 줄로 내려갈 수 있음) -->
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="tech-card-wrapper">
                         <article class="tech-card">
                             <div class="tech-card-bg biotechnology"></div>
