@@ -21,7 +21,7 @@
         .content-section { padding: 60px 20px; }
         .section-title { font-size: 2rem; font-weight: 700; color: #92400E; margin-bottom: 50px; text-align: center; }
 
-        /* 카드 스타일 (글자/아이콘 크기 원래대로 유지) */
+        /* 카드 스타일: 글자/아이콘 크기 유지, 가로폭만 더 축소 */
         .tech-card { 
             background: white; 
             border-radius: 20px; 
@@ -31,8 +31,8 @@
             transition: all 0.4s ease; 
             position: relative; 
             overflow: hidden;
-            max-width: 260px;      /* 카드 최대 너비만 제한 */
-            margin-left: auto;     /* 가운데 정렬 */
+            max-width: 230px;      /* 이전 260px → 230px 로 더 줄임 */
+            margin-left: auto;     
             margin-right: auto;
         }
         .tech-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; }
@@ -49,16 +49,37 @@
         .tech-icon.transportation { background: linear-gradient(135deg, #10B981 0%, #059669 100%); }
         .tech-icon.information { background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%); }
         .tech-icon.biotechnology { background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%); }
+
         .tech-title { font-size: 1.8rem; font-weight: 700; color: #1E293B; margin-bottom: 15px; text-align: center; }
         .tech-description { font-size: 1rem; color: #64748B; text-align: center; margin-bottom: 30px; }
+
         .button-group { display: flex; flex-direction: column; gap: 10px; }
-        .btn-ai-learning, .btn-worksheet { width: 100%; padding: 18px 30px; border-radius: 50px; font-size: 1.1rem; font-weight: 700; border: none; color: white; cursor: pointer; transition: all 0.3s ease; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; }
+
+        /* 버튼: 글자 한 줄을 위해 글꼴 크기·패딩만 조금 줄임 */
+        .btn-ai-learning, .btn-worksheet { 
+            width: 100%; 
+            padding: 14px 20px;   /* 18px → 14px 로 살짝 축소 */
+            border-radius: 50px; 
+            font-size: 1rem;      /* 1.1rem → 1rem */
+            font-weight: 700; 
+            border: none; 
+            color: white; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            text-decoration: none; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 8px; 
+        }
         .btn-ai-learning:hover, .btn-worksheet:hover { transform: scale(1.05); box-shadow: 0 10px 30px rgba(0,0,0,0.3); color: white; }
+
         .btn-ai-learning.manufacturing { background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%); }
         .btn-ai-learning.construction { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
         .btn-ai-learning.transportation { background: linear-gradient(135deg, #10B981 0%, #059669 100%); }
         .btn-ai-learning.information { background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%); }
         .btn-ai-learning.biotechnology { background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%); }
+
         .btn-worksheet { background: linear-gradient(135deg, #64748B 0%, #475569 100%); }
         .btn-ai-learning.disabled, .btn-worksheet.disabled { background: linear-gradient(135deg, #9CA3AF 0%, #6B7280 100%); cursor: not-allowed; opacity: 0.6; }
         .coming-soon { display: inline-block; background: #FEE2E2; color: #991B1B; padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; font-weight: 600; margin-top: 10px; }
@@ -85,8 +106,8 @@
         <div class="container">
             <h2 class="section-title"><i class="bi bi-gear-fill"></i> 기술 영역 선택</h2>
             
-            <!-- 카드들을 중앙 정렬하고, 화면에 더 많이 들어오도록 col 크기 조정 -->
-            <div class="row justify-content-center">
+            <!-- g-2 로 열 사이 간격을 줄이고, justify-content-center 로 중앙 정렬 -->
+            <div class="row justify-content-center g-2">
                 <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                     <div class="tech-card manufacturing">
                         <div class="tech-icon manufacturing"><i class="bi bi-gear-wide-connected"></i></div>
@@ -94,7 +115,7 @@
                         <p class="tech-description">제품을 설계하고 생산하는<br>제조 기술을 배워보세요</p>
                         <div class="button-group">
                             <a href="https://notebooklm.google.com/notebook/597e29bf-d7af-4365-aebe-a433ee30129c" target="_blank" class="btn-ai-learning manufacturing">
-                                <i class="bi bi-stars"></i><span>AI 자기주도학습 시작</span>
+                                <i class="bi bi-stars"></i><span>AI자기주도학습</span>
                             </a>
                             <button class="btn-worksheet" onclick="openWorksheet('manufacturing')">
                                 <i class="bi bi-file-earmark-text"></i><span>활동지 학습</span>
@@ -110,7 +131,7 @@
                         <p class="tech-description">건축물과 구조물을 설계하고<br>시공하는 기술을 익혀보세요</p>
                         <div class="button-group">
                             <a href="https://notebooklm.google.com/notebook/dbf0773c-ac2f-4ecf-9f9b-2bed7a85cc14" target="_blank" class="btn-ai-learning construction">
-                                <i class="bi bi-stars"></i><span>AI 자기주도학습 시작</span>
+                                <i class="bi bi-stars"></i><span>AI자기주도학습</span>
                             </a>
                             <button class="btn-worksheet" onclick="openWorksheet('construction')">
                                 <i class="bi bi-file-earmark-text"></i><span>활동지 학습</span>
