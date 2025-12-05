@@ -25,13 +25,14 @@
             background-color: #f1f5f9;
         }
 
-        /* 전체 배경: 밝은 미래 도시 느낌 */
+        /* 1. 밝은 미래도시 배경 (여우 그림 제거) */
         body::before {
             content: '';
             position: fixed;
             inset: 0;
+            /* 밝은 미래도시(고층 건물, 맑은 톤) 예시 이미지 */
             background:
-                linear-gradient(to bottom, rgba(255,255,255,0.85), rgba(241,245,249,0.95)),
+                linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(241,245,249,0.95)),
                 url('https://images.unsplash.com/photo-1501707305551-9b2adda5e527?auto=format&fit=crop&w=1920&q=80')
                 center/cover no-repeat;
             opacity: 1;
@@ -49,7 +50,7 @@
             pointer-events: none;
         }
         
-        /* Hero Section (예전 구조 유지, 약간 더 밝게) */
+        /* Hero Section */
         .hero-section {
             min-height: 80vh;
             display: flex;
@@ -75,11 +76,13 @@
             backdrop-filter: blur(4px);
         }
         
+        /* 2. 제목·부제 글자 모바일에서 줄바꿈 최소화 (clamp로 자동 조정)[web:48][web:52] */
         .hero-title {
-            font-size: 3.2rem;
+            font-size: clamp(1.7rem, 3.6vw, 3.1rem);  /* 최소, 화면 비율, 최대 */
             font-weight: 900;
             margin-bottom: 18px;
             text-shadow: 0 8px 30px rgba(15,23,42,0.15);
+            white-space: nowrap; /* 가능하면 한 줄 유지 */
         }
         
         .hero-title i {
@@ -88,10 +91,11 @@
         }
 
         .hero-subtitle {
-            font-size: 1.4rem;
+            font-size: clamp(1.1rem, 2.4vw, 1.4rem);
             font-weight: 400;
             margin-bottom: 28px;
             color: #1e293b;
+            white-space: nowrap;
         }
         
         .hero-subtitle i {
@@ -100,29 +104,12 @@
         }
 
         .hero-description {
-            font-size: 1.05rem;
+            font-size: 1.02rem;
             max-width: 800px;
             margin: 0 auto 36px;
             line-height: 1.8;
             opacity: 0.95;
             color: #1f2933;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.85);
-            border: 1px solid rgba(148,163,184,0.6);
-            color: #1e293b;
-            font-size: 0.9rem;
-            margin-bottom: 18px;
-        }
-
-        .hero-badge i {
-            color: #22c55e;
         }
         
         /* 아래로 스크롤 유도 아이콘 */
@@ -137,7 +124,7 @@
             50% { transform: translateY(-10px); }
         }
 
-        /* Cards Section (예전 구조 비슷하게 유지) */
+        /* Cards Section */
         .cards-section {
             padding: 60px 20px 80px;
             background: linear-gradient(to bottom, rgba(248,250,252,0.92), rgba(226,232,240,0.95));
@@ -288,59 +275,15 @@
             font-size: 0.9rem;
         }
         
-        /* Animations */
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        /* Responsive */
+        /* Responsive – 제목/부제는 이미 clamp로 조정, 추가로 여백만 조정 */
         @media (max-width: 768px) {
             .hero-section {
                 min-height: 70vh;
                 padding-top: 40px;
             }
 
-            .hero-title {
-                font-size: 2.1rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.15rem;
-            }
-            
-            .section-title {
-                font-size: 1.9rem;
-            }
-            
-            .card-title {
-                font-size: 1.6rem;
-            }
-
-            .card-description {
-                font-size: 0.95rem;
+            .hero-description {
+                font-size: 0.98rem;
             }
         }
     </style>
@@ -350,20 +293,18 @@
     <section class="hero-section">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <div class="hero-badge">
-                <i class="bi bi-cpu-fill"></i>
-                AI + 미래 도시 기술 교과 학습
-            </div>
+            <!-- 3. 위 아이콘/뱃지 삭제 완료 -->
+            <!-- 4. 제목 문구 변경 -->
             <h1 class="hero-title">
-                <i class="bi bi-cpu"></i> AI를 활용한 기술교과 자기주도학습 페이지
+                <i class="bi bi-cpu"></i> AI를 활용한 자기주도 기술수업
             </h1>
             <p class="hero-subtitle">
                 <i class="bi bi-stars"></i> 인공지능과 함께하는 스마트 학습 여정
             </p>
             <p class="hero-description">
-                최신 AI 기술을 활용하여 학생 스스로 학습하고 성장하는 자기주도학습 플랫폼입니다.<br>
-                notebookLM, Google Apps Script, 그리고 다양한 교육용 AI 도구를 통해<br>
-                여러분의 학습 경험을 미래 도시처럼 혁신적으로 변화시켜 보세요.
+                AI 기술을 활용하여 학생 스스로 학습하고 성장하는 자기주도학습 플랫폼입니다.<br>
+                notebookLM, Google Form, Google AppSheet, 등 다양한 교육용 AI 도구를 통해<br>
+                여러분의 학습 경험을 혁신적으로 변화시켜 보세요.
             </p>
             <div class="float">
                 <i class="bi bi-chevron-double-down" style="font-size: 3rem;"></i>
