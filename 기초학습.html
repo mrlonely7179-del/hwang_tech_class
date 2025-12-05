@@ -23,22 +23,40 @@
         
         .tech-grid {
             display: grid;
-            grid-template-columns: repeat(5, 1fr); /* 5개 고정 */
-            gap: 12px; /* 카드 사이 간격 */
-            padding: 20px;
-            max-width: 1400px;
-            margin: 0 auto;
+            grid-template-columns: repeat(5, 1fr); /* PC: 5개 */
+            gap: 12px;
         }
+
+        /* 태블릿 (최대 1024px) → 3열 */
+        @media (max-width: 1024px) {
+            .tech-grid {
+                grid-template-columns: repeat(3, 1fr);
+                }
+        }
+
+        /* 작은 태블릿/큰 스마트폰 (최대 768px) → 2열 */
+        @media (max-width: 768px) {
+                .tech-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+        }
+
+        /* 모바일 (최대 480px) → 1열 */
+        @media (max-width: 480px) {
+                .tech-grid {
+                    grid-template-columns: 1fr;
+            }
+        }    
         
         .tech-card-wrapper {
             display: flex;
             justify-content: center;
         }
 
-        /* 카드 너비 250px로 조정 */
+        /* 카드 너비 240px로 조정 */
         .tech-card { 
             position: relative;
-            width: 250px;
+            width: 240px;
             border-radius: 26px;
             overflow: hidden;
             box-shadow: 0 16px 40px rgba(15, 23, 42, 0.18);
@@ -190,7 +208,7 @@
             
             <div class="row justify-content-center g-1">
                 <!-- 제조기술: 자동차 제조 공장 -->
-                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6">
+                <div class="col-xl-3 col-lg-2 col-md-4 col-sm-6">
                     <div class="tech-card-wrapper">
                         <article class="tech-card">
                             <div class="tech-card-bg manufacturing"></div>
