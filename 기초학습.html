@@ -20,149 +20,36 @@
         .btn-home:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.3); color: #D97706; }
         .content-section { padding: 60px 20px; }
         .section-title { font-size: 2rem; font-weight: 700; color: #92400E; margin-bottom: 40px; text-align: center; }
-               
-        .tech-card-wrapper {
-            display: flex;
-            justify-content: center;
-        }
-
-        /* 카드 너비 조정 */
-        .tech-card { 
-            position: relative;
-            width: 250px;   // 여기를 수정
-            border-radius: 26px;
-            overflow: hidden;
-            box-shadow: 0 16px 40px rgba(15, 23, 42, 0.18);
-            background-color: #ffffff;
-        } 
-
-        .tech-card-bg {
-            position: relative;
-            height: 140px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .tech-card-bg::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-image: linear-gradient(to bottom, rgba(15,23,42,0.1), rgba(15,23,42,0.45));
-        }
-
-        /* 각 영역별 새로운 배경 이미지 */
-        .tech-card-bg.manufacturing {
-            /* 자동차 제조 공장 */
-            background-image: url("https://images.pexels.com/photos/1149831/pexels-photo-1149831.jpeg?auto=compress&cs=tinysrgb&w=800");
-        }
-        .tech-card-bg.construction {
-            /* 초고층 빌딩 */
-            background-image: url("https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&cs=tinysrgb&w=800");
-        }
-        .tech-card-bg.transportation {
-            /* 드론 */
-            background-image: url("https://images.pexels.com/photos/442587/pexels-photo-442587.jpeg?auto=compress&cs=tinysrgb&w=800");
-        }
-        .tech-card-bg.information {
-            /* 스마트폰으로 전화하는 모습 */
-            background-image: url("https://images.pexels.com/photos/699122/pexels-photo-699122.jpeg?auto=compress&cs=tinysrgb&w=800");
-        }
-        .tech-card-bg.biotechnology {
-            /* 유전자 재조합 / DNA 연구 */
-            background-image: url("https://images.pexels.com/photos/256262/pexels-photo-256262.jpeg?auto=compress&cs=tinysrgb&w=800");
-        }
-
-        .tech-card-body {
-            background: #ffffff;
-            padding: 30px 24px 26px 24px;
-        }
-
-        .tech-icon { 
-            width: 76px; 
-            height: 76px; 
-            border-radius: 20px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            font-size: 2.6rem; 
-            color: white; 
-            margin: -48px auto 18px auto;
-            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.35);
-        }
+        .tech-card-wrapper { display: flex; justify-content: center; }
+        .tech-card { position: relative; width: 250px; border-radius: 26px; overflow: hidden; box-shadow: 0 16px 40px rgba(15, 23, 42, 0.18); background-color: #ffffff; }
+        .tech-card-bg { position: relative; height: 140px; background-size: cover; background-position: center; }
+        .tech-card-bg::after { content: ""; position: absolute; inset: 0; background-image: linear-gradient(to bottom, rgba(15,23,42,0.1), rgba(15,23,42,0.45)); }
+        .tech-card-bg.manufacturing { background-image: url("https://images.pexels.com/photos/1149831/pexels-photo-1149831.jpeg?auto=compress&cs=tinysrgb&w=800"); }
+        .tech-card-bg.construction { background-image: url("https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&cs=tinysrgb&w=800"); }
+        .tech-card-bg.transportation { background-image: url("https://images.pexels.com/photos/442587/pexels-photo-442587.jpeg?auto=compress&cs=tinysrgb&w=800"); }
+        .tech-card-bg.information { background-image: url("https://images.pexels.com/photos/699122/pexels-photo-699122.jpeg?auto=compress&cs=tinysrgb&w=800"); }
+        .tech-card-bg.biotechnology { background-image: url("https://images.pexels.com/photos/256262/pexels-photo-256262.jpeg?auto=compress&cs=tinysrgb&w=800"); }
+        .tech-card-body { background: #ffffff; padding: 30px 24px 26px 24px; }
+        .tech-icon { width: 76px; height: 76px; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2.6rem; color: white; margin: -48px auto 18px auto; box-shadow: 0 8px 20px rgba(15, 23, 42, 0.35); }
         .tech-icon.manufacturing { background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%); }
         .tech-icon.construction { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
         .tech-icon.transportation { background: linear-gradient(135deg, #10B981 0%, #059669 100%); }
         .tech-icon.information { background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%); }
         .tech-icon.biotechnology { background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%); }
-
-        .tech-title { 
-            font-size: 1.6rem; 
-            font-weight: 800; 
-            color: #0F172A; 
-            margin-bottom: 12px; 
-            text-align: center; 
-        }
-
-        .tech-description { 
-            font-size: 0.96rem; 
-            color: #64748B; 
-            text-align: center; 
-            margin-bottom: 20px; 
-            line-height: 1.5;
-        }
-
+        .tech-title { font-size: 1.6rem; font-weight: 800; color: #0F172A; margin-bottom: 12px; text-align: center; }
+        .tech-description { font-size: 0.96rem; color: #64748B; text-align: center; margin-bottom: 20px; line-height: 1.5; }
         .button-group { display: flex; flex-direction: column; gap: 8px; }
-
-        .btn-ai-learning, .btn-worksheet { 
-            width: 100%; 
-            padding: 11px 14px; 
-            border-radius: 999px; 
-            font-size: 0.9rem; 
-            font-weight: 700; 
-            border: none; 
-            color: white; 
-            cursor: pointer; 
-            transition: all 0.25s ease; 
-            text-decoration: none; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            gap: 6px; 
-            white-space: nowrap;
-        }
-        .btn-ai-learning:hover, .btn-worksheet:hover { 
-            transform: translateY(-2px); 
-            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.28); 
-            color: white; 
-        }
-
+        .btn-ai-learning, .btn-worksheet { width: 100%; padding: 11px 14px; border-radius: 999px; font-size: 0.9rem; font-weight: 700; border: none; color: white; cursor: pointer; transition: all 0.25s ease; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap; }
+        .btn-ai-learning:hover, .btn-worksheet:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(15, 23, 42, 0.28); color: white; }
         .btn-ai-learning.manufacturing { background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%); }
         .btn-ai-learning.construction { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
         .btn-ai-learning.transportation { background: linear-gradient(135deg, #10B981 0%, #059669 100%); }
         .btn-ai-learning.information { background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%); }
         .btn-ai-learning.biotechnology { background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%); }
-
         .btn-worksheet { background: linear-gradient(135deg, #64748B 0%, #475569 100%); }
-        .btn-ai-learning.disabled, .btn-worksheet.disabled { 
-            background: linear-gradient(135deg, #9CA3AF 0%, #6B7280 100%); 
-            cursor: not-allowed; 
-            opacity: 0.6; 
-        }
-        .coming-soon { 
-            display: inline-block; 
-            background: #FEE2E2; 
-            color: #991B1B; 
-            padding: 5px 12px; 
-            border-radius: 15px; 
-            font-size: 0.82rem; 
-            font-weight: 600; 
-            margin-top: 10px; 
-        }
-
-        @media (max-width: 768px) {
-            .page-header h1 { font-size: 1.8rem; }
-            .nav-home { position: static; margin: 20px; }
-        }
+        .btn-ai-learning.disabled, .btn-worksheet.disabled { background: linear-gradient(135deg, #9CA3AF 0%, #6B7280 100%); cursor: not-allowed; opacity: 0.6; }
+        .coming-soon { display: inline-block; background: #FEE2E2; color: #991B1B; padding: 5px 12px; border-radius: 15px; font-size: 0.82rem; font-weight: 600; margin-top: 10px; }
+        @media (max-width: 768px) { .page-header h1 { font-size: 1.8rem; } .nav-home { position: static; margin: 20px; } }
     </style>
 </head>
 <body>
@@ -179,21 +66,15 @@
         <div class="container">
             <h2 class="section-title"><i class="bi bi-gear-fill"></i> 기술 영역 선택</h2>
             
-            <div class="row justify-content-center g-1">
-                <!-- 제조기술: 자동차 제조 공장 -->
-                <div class="col-xl-3 col-lg-2 col-md-4 col-sm-6">
+            <div class="row justify-content-center g-4">
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="tech-card-wrapper">
                         <article class="tech-card">
                             <div class="tech-card-bg manufacturing"></div>
                             <div class="tech-card-body">
                                 <div class="tech-icon manufacturing"><i class="bi bi-gear-wide-connected"></i></div>
                                 <h3 class="tech-title">제조기술</h3>
-                                <p class="tech-description">
-                                    제품을 설계하고<br>
-                                    재료를 가공하여<br>
-                                    조립과 검사를 거쳐<br>
-                                    완성품을 만드는 기술입니다
-                                </p>
+                                <p class="tech-description">제품을 설계하고<br>재료를 가공하여<br>조립과 검사를 거쳐<br>완성품을 만드는 기술입니다</p>
                                 <div class="button-group">
                                     <a href="https://notebooklm.google.com/notebook/597e29bf-d7af-4365-aebe-a433ee30129c" target="_blank" class="btn-ai-learning manufacturing">
                                         <i class="bi bi-stars"></i><span>AI자기주도학습</span>
@@ -207,20 +88,14 @@
                     </div>
                 </div>
 
-                <!-- 건설기술: 초고층 빌딩 -->
-                <div class="col-xl-3 col-lg-2 col-md-4 col-sm-6">
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="tech-card-wrapper">
                         <article class="tech-card">
                             <div class="tech-card-bg construction"></div>
                             <div class="tech-card-body">
                                 <div class="tech-icon construction"><i class="bi bi-building"></i></div>
                                 <h3 class="tech-title">건설기술</h3>
-                                <p class="tech-description">
-                                    도로와 건축물 등<br>
-                                    생활 공간을 계획하고<br>
-                                    구조를 설계한 뒤<br>
-                                    안전하게 시공하는 기술입니다
-                                </p>
+                                <p class="tech-description">도로와 건축물 등<br>생활 공간을 계획하고<br>구조를 설계한 뒤<br>안전하게 시공하는 기술입니다</p>
                                 <div class="button-group">
                                     <a href="https://notebooklm.google.com/notebook/dbf0773c-ac2f-4ecf-9f9b-2bed7a85cc14" target="_blank" class="btn-ai-learning construction">
                                         <i class="bi bi-stars"></i><span>AI자기주도학습</span>
@@ -234,20 +109,14 @@
                     </div>
                 </div>
 
-                <!-- 수송기술: 드론 -->
-                <div class="col-xl-3 col-lg-2 col-md-4 col-sm-6">
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="tech-card-wrapper">
                         <article class="tech-card">
                             <div class="tech-card-bg transportation"></div>
                             <div class="tech-card-body">
                                 <div class="tech-icon transportation"><i class="bi bi-truck-front"></i></div>
                                 <h3 class="tech-title">수송기술</h3>
-                                <p class="tech-description">
-                                    사람과 물자를<br>
-                                    안전하고 빠르게<br>
-                                    원하는 장소로 옮기는<br>
-                                    다양한 수단을 위한 기술입니다
-                                </p>
+                                <p class="tech-description">사람과 물자를<br>안전하고 빠르게<br>원하는 장소로 옮기는<br>다양한 수단의 기술입니다</p>
                                 <div class="button-group">
                                     <button class="btn-ai-learning transportation disabled" disabled>
                                         <i class="bi bi-hourglass-split"></i><span>준비 중</span>
@@ -260,7 +129,29 @@
                         </article>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-2 col-md-4 col-sm-6">
+
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                    <div class="tech-card-wrapper">
+                        <article class="tech-card">
+                            <div class="tech-card-bg information"></div>
+                            <div class="tech-card-body">
+                                <div class="tech-icon information"><i class="bi bi-wifi"></i></div>
+                                <h3 class="tech-title">정보통신기술</h3>
+                                <p class="tech-description">컴퓨터와 네트워크로<br>정보를 저장하고 처리하며<br>멀리 있는 사람들에게<br>빠르게 전달하는 기술입니다</p>
+                                <div class="button-group">
+                                    <button class="btn-ai-learning information disabled" disabled>
+                                        <i class="bi bi-hourglass-split"></i><span>준비 중</span>
+                                    </button>
+                                    <button class="btn-worksheet disabled" disabled>
+                                        <i class="bi bi-lock-fill"></i><span>준비 중</span>
+                                    </button>
+                                </div>
+                                <span class="coming-soon">곧 공개됩니다</span>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="tech-card-wrapper">
                         <article class="tech-card">
                             <div class="tech-card-bg information"></div>
@@ -286,7 +177,7 @@
                     </div>
                 </div>
 
-                <div class="col-xl-3 col-lg-2 col-md-4 col-sm-6">
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="tech-card-wrapper">
                         <article class="tech-card">
                             <div class="tech-card-bg biotechnology"></div>
@@ -307,6 +198,7 @@
                                         <i class="bi bi-lock-fill"></i><span>준비 중</span>
                                     </button>
                                 </div>
+                                <span class="coming-soon">곧 공개됩니다</span>
                             </div>
                         </article>
                     </div>
