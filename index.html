@@ -3,48 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI를 활용한 기술교과 자기주도학습</title>
-
+    <title> AI를 활용한 기술교과 자기주도학습 </title>
+    
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-
+    
     <style>
         * {
             font-family: 'Noto Sans KR', sans-serif;
             box-sizing: border-box;
         }
-
+        
         body {
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-            color: #e5e7eb;
+            background-color: #f1f5f9;
         }
 
-        /* 전체 화면을 채우는 레이아웃 (왼쪽 소개 + 오른쪽 카드 3개) */
-        .main-layout {
-            min-height: 100vh;
-            display: flex;
-            align-items: stretch;
-            justify-content: center;
-            padding: 40px 5vw;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* 첨단 기술 배경 이미지 + 그라디언트 오버레이 */
+        /* 전체 배경: 밝은 미래 도시 느낌 */
         body::before {
             content: '';
             position: fixed;
             inset: 0;
             background:
-                linear-gradient(135deg, rgba(15,23,42,0.9), rgba(30,64,175,0.8)),
-                url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80')
+                linear-gradient(to bottom, rgba(255,255,255,0.85), rgba(241,245,249,0.95)),
+                url('https://images.unsplash.com/photo-1501707305551-9b2adda5e527?auto=format&fit=crop&w=1920&q=80')
                 center/cover no-repeat;
+            opacity: 1;
             z-index: -2;
         }
 
@@ -53,370 +43,401 @@
             position: fixed;
             inset: 0;
             background:
-                radial-gradient(circle at 20% 20%, rgba(59,130,246,0.25) 0, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(236,72,153,0.25) 0, transparent 50%);
+                radial-gradient(circle at 10% 10%, rgba(59,130,246,0.18) 0, transparent 55%),
+                radial-gradient(circle at 90% 80%, rgba(236,72,153,0.16) 0, transparent 55%);
             z-index: -1;
             pointer-events: none;
         }
-
-        /* 왼쪽: 히어로 텍스트 영역 */
-        .hero-panel {
-            flex: 0 0 40%;
-            max-width: 480px;
-            padding-right: 40px;
+        
+        /* Hero Section (예전 구조 유지, 약간 더 밝게) */
+        .hero-section {
+            min-height: 80vh;
             display: flex;
-            flex-direction: column;
+            align-items: center;
             justify-content: center;
+            position: relative;
+            padding: 60px 20px 40px;
         }
 
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(148,163,184,0.08), rgba(59,130,246,0.08));
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: #0f172a;
+            padding: 40px 20px;
+            backdrop-filter: blur(4px);
+        }
+        
         .hero-title {
-            font-size: 2.6rem;
+            font-size: 3.2rem;
             font-weight: 900;
-            margin-bottom: 20px;
-            line-height: 1.3;
-            text-shadow: 0 15px 40px rgba(0,0,0,0.7);
+            margin-bottom: 18px;
+            text-shadow: 0 8px 30px rgba(15,23,42,0.15);
         }
-
+        
         .hero-title i {
-            color: #38bdf8;
+            color: #2563eb;
             margin-right: 6px;
         }
 
         .hero-subtitle {
-            font-size: 1.25rem;
+            font-size: 1.4rem;
             font-weight: 400;
-            margin-bottom: 24px;
-            color: #cbd5f5;
+            margin-bottom: 28px;
+            color: #1e293b;
         }
-
+        
         .hero-subtitle i {
-            color: #facc15;
+            color: #f97316;
             margin-right: 6px;
         }
 
         .hero-description {
-            font-size: 1rem;
+            font-size: 1.05rem;
+            max-width: 800px;
+            margin: 0 auto 36px;
             line-height: 1.8;
-            color: #e5e7eb;
             opacity: 0.95;
+            color: #1f2933;
         }
 
-        .badge-ai {
+        .hero-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 8px 14px;
+            padding: 8px 16px;
             border-radius: 999px;
-            background: rgba(15,23,42,0.85);
+            background: rgba(255,255,255,0.85);
             border: 1px solid rgba(148,163,184,0.6);
-            color: #e5e7eb;
-            font-size: 0.85rem;
-            margin-bottom: 16px;
+            color: #1e293b;
+            font-size: 0.9rem;
+            margin-bottom: 18px;
         }
 
-        .badge-ai i {
+        .hero-badge i {
             color: #22c55e;
         }
-
-        /* 오른쪽: 카드 영역 */
-        .cards-panel {
-            flex: 1;
-            display: flex;
-            align-items: center;
+        
+        /* 아래로 스크롤 유도 아이콘 */
+        .float {
+            animation: float 3s ease-in-out infinite;
+            color: #1e293b;
+            opacity: 0.7;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
 
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 24px;
-            width: 100%;
+        /* Cards Section (예전 구조 비슷하게 유지) */
+        .cards-section {
+            padding: 60px 20px 80px;
+            background: linear-gradient(to bottom, rgba(248,250,252,0.92), rgba(226,232,240,0.95));
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 40px;
+        }
+        
+        .section-title i {
+            color: #2563eb;
+            margin-right: 8px;
         }
 
         .learning-card {
-            background: rgba(15,23,42,0.92);
+            background: #ffffff;
             border-radius: 20px;
-            padding: 24px 20px 22px;
-            box-shadow:
-                0 15px 40px rgba(0,0,0,0.5),
-                0 0 0 1px rgba(148,163,184,0.25);
-            transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+            padding: 32px 26px;
+            margin-bottom: 30px;
+            box-shadow: 0 16px 40px rgba(15,23,42,0.08);
+            transition: all 0.35s ease;
             position: relative;
             overflow: hidden;
             height: 100%;
+            min-height: 320px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            border: 1px solid rgba(226,232,240,0.9);
         }
-
+        
         .learning-card::before {
             content: '';
             position: absolute;
-            inset: 0;
-            opacity: 0;
-            transition: opacity 0.35s ease;
-            pointer-events: none;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
         }
-
-        .learning-card.basic::before {
-            background: radial-gradient(circle at 0% 0%, rgba(250,204,21,0.25), transparent 60%);
-        }
-
-        .learning-card.advanced::before {
-            background: radial-gradient(circle at 0% 0%, rgba(59,130,246,0.25), transparent 60%);
-        }
-
-        .learning-card.development::before {
-            background: radial-gradient(circle at 0% 0%, rgba(236,72,153,0.25), transparent 60%);
-        }
-
+        
         .learning-card:hover {
-            transform: translateY(-8px);
-            box-shadow:
-                0 25px 70px rgba(0,0,0,0.75),
-                0 0 0 1px rgba(226,232,240,0.6);
-            background: rgba(15,23,42,0.98);
+            transform: translateY(-10px);
+            box-shadow: 0 24px 60px rgba(15,23,42,0.16);
         }
-
-        .learning-card:hover::before {
-            opacity: 1;
+        
+        .learning-card.basic::before {
+            background: linear-gradient(90deg, #FBBF24 0%, #F97316 100%);
         }
-
+        
+        .learning-card.advanced::before {
+            background: linear-gradient(90deg, #60A5FA 0%, #2563EB 100%);
+        }
+        
+        .learning-card.development::before {
+            background: linear-gradient(90deg, #F472B6 0%, #EC4899 100%);
+        }
+        
         .card-icon {
-            width: 64px;
-            height: 64px;
-            border-radius: 18px;
+            width: 90px;
+            height: 90px;
+            border-radius: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.9rem;
-            margin-bottom: 18px;
+            font-size: 2.6rem;
+            margin: 0 auto 22px;
             color: white;
         }
-
+        
         .card-icon.basic {
-            background: linear-gradient(135deg, #FACC15 0%, #F97316 100%);
+            background: linear-gradient(135deg, #FBBF24 0%, #F97316 100%);
         }
-
+        
         .card-icon.advanced {
             background: linear-gradient(135deg, #60A5FA 0%, #2563EB 100%);
         }
-
+        
         .card-icon.development {
             background: linear-gradient(135deg, #F472B6 0%, #EC4899 100%);
         }
-
+        
         .card-title {
-            font-size: 1.3rem;
+            font-size: 1.9rem;
             font-weight: 700;
-            color: #f9fafb;
-            margin-bottom: 10px;
+            color: #0f172a;
+            margin-bottom: 16px;
+            text-align: center;
         }
-
+        
         .card-description {
-            font-size: 0.95rem;
-            color: #cbd5f5;
-            line-height: 1.7;
-            margin-bottom: 18px;
+            font-size: 1.02rem;
+            color: #4b5563;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            text-align: center;
         }
-
+        
         .btn-enter {
             width: 100%;
-            padding: 12px 16px;
+            padding: 16px 22px;
             border-radius: 999px;
-            font-size: 0.95rem;
+            font-size: 1.05rem;
             font-weight: 600;
             border: none;
             color: white;
             cursor: pointer;
-            transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+            transition: all 0.3s ease;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
-            position: relative;
-            z-index: 1;
-            white-space: nowrap;
+            gap: 8px;
         }
-
+        
         .btn-enter.basic {
-            background: linear-gradient(135deg, #FACC15 0%, #F97316 100%);
+            background: linear-gradient(135deg, #FBBF24 0%, #F97316 100%);
         }
-
+        
         .btn-enter.advanced {
             background: linear-gradient(135deg, #60A5FA 0%, #2563EB 100%);
         }
-
+        
         .btn-enter.development {
             background: linear-gradient(135deg, #F472B6 0%, #EC4899 100%);
         }
-
+        
         .btn-enter:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(15,23,42,0.7);
-            filter: brightness(1.02);
+            box-shadow: 0 12px 30px rgba(15,23,42,0.25);
             color: white;
         }
-
-        .btn-enter i {
-            font-size: 1rem;
-        }
-
-        /* 푸터 */
+        
+        /* Footer */
         .footer {
-            background: rgba(15,23,42,0.95);
-            color: #9ca3af;
-            padding: 16px 20px;
+            background: #0f172a;
+            color: white;
+            padding: 30px 20px;
             text-align: center;
-            font-size: 0.85rem;
-            border-top: 1px solid rgba(55,65,81,0.9);
         }
-
-        .footer i {
-            color: #6b7280;
-            margin-right: 4px;
+        
+        .footer p {
+            margin: 0;
+            opacity: 0.85;
+            font-size: 0.9rem;
         }
-
-        /* 반응형 */
-        @media (max-width: 992px) {
-            .main-layout {
-                flex-direction: column;
-                padding: 28px 5vw 32px;
+        
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
             }
-
-            .hero-panel {
-                flex: none;
-                max-width: 100%;
-                padding-right: 0;
-                margin-bottom: 24px;
-                text-align: center;
-                align-items: center;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
-
-            .hero-panel .badge-ai {
-                margin-left: auto;
-                margin-right: auto;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
             }
-
-            .cards-panel {
-                width: 100%;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
-
-            .cards-grid {
-                grid-template-columns: 1fr;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: 70vh;
+                padding-top: 40px;
             }
 
             .hero-title {
-                font-size: 2rem;
+                font-size: 2.1rem;
             }
-        }
-
-        @media (max-width: 576px) {
-            .main-layout {
-                padding: 24px 16px 28px;
-            }
-
-            .hero-title {
-                font-size: 1.7rem;
-            }
-
+            
             .hero-subtitle {
-                font-size: 1rem;
-            }
-
-            .card-title {
                 font-size: 1.15rem;
+            }
+            
+            .section-title {
+                font-size: 1.9rem;
+            }
+            
+            .card-title {
+                font-size: 1.6rem;
             }
 
             .card-description {
-                font-size: 0.9rem;
+                font-size: 0.95rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- 메인 레이아웃: 왼쪽 소개 + 오른쪽 카드 -->
-    <main class="main-layout">
-        <!-- 왼쪽: 소개 영역 -->
-        <section class="hero-panel">
-            <div class="badge-ai">
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
                 <i class="bi bi-cpu-fill"></i>
-                AI 기반 기술교과 자기주도학습
+                AI + 미래 도시 기술 교과 학습
             </div>
             <h1 class="hero-title">
-                <i class="bi bi-cpu"></i>
-                AI를 활용한 기술교과<br>자기주도학습 페이지
+                <i class="bi bi-cpu"></i> AI를 활용한 기술교과 자기주도학습 페이지
             </h1>
             <p class="hero-subtitle">
-                <i class="bi bi-stars"></i>
-                인공지능과 함께하는 스마트 학습 여정
+                <i class="bi bi-stars"></i> 인공지능과 함께하는 스마트 학습 여정
             </p>
             <p class="hero-description">
-                최신 AI 기술을 활용하여 학생 스스로 탐구하고 성장할 수 있는 자기주도학습 플랫폼입니다.<br>
-                notebookLM,구글폼, AppSheet 등 다양한 교육용 AI 도구를 통해<br>
-                기술의 5대 영역을 깊이 있게 학습하고, 프로젝트 중심으로 역량을 키워 보세요.
+                최신 AI 기술을 활용하여 학생 스스로 학습하고 성장하는 자기주도학습 플랫폼입니다.<br>
+                notebookLM, Google Apps Script, 그리고 다양한 교육용 AI 도구를 통해<br>
+                여러분의 학습 경험을 미래 도시처럼 혁신적으로 변화시켜 보세요.
             </p>
-        </section>
+            <div class="float">
+                <i class="bi bi-chevron-double-down" style="font-size: 3rem;"></i>
+            </div>
+        </div>
+    </section>
 
-        <!-- 오른쪽: 3개 카드 (한 화면에 모두 보이도록) -->
-        <section class="cards-panel">
-            <div class="cards-grid">
+    <!-- Cards Section -->
+    <section class="cards-section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="bi bi-mortarboard-fill"></i> 학습 단계 선택
+            </h2>
+            
+            <div class="row justify-content-center">
                 <!-- 기초학습 카드 -->
-                <article class="learning-card basic">
-                    <div>
-                        <div class="card-icon basic">
-                            <i class="bi bi-book-half"></i>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="learning-card basic">
+                        <div>
+                            <div class="card-icon basic">
+                                <i class="bi bi-book-half"></i>
+                            </div>
+                            <h3 class="card-title">기초학습</h3>
+                            <p class="card-description">
+                                AI를 활용하여 기술의 5대 영역을 이해하고<br>
+                                핵심 개념과 기본 원리를 차근차근 익히는 단계입니다.
+                            </p>
                         </div>
-                        <h3 class="card-title">기초학습</h3>
-                        <p class="card-description">
-                            AI를 활용하여 기술의 5대 영역을 쉽게 이해하고<br>
-                            기본 개념과 원리를 탄탄하게 다지는 단계입니다.
-                        </p>
+                        <a href="기초학습.html" class="btn-enter basic">
+                            <i class="bi bi-box-arrow-in-right"></i> 기초학습 시작하기
+                        </a>
                     </div>
-                    <a href="기초학습.html" class="btn-enter basic">
-                        <i class="bi bi-box-arrow-in-right"></i>
-                        기초학습 시작하기
-                    </a>
-                </article>
+                </div>
 
                 <!-- 심화학습 카드 -->
-                <article class="learning-card advanced">
-                    <div>
-                        <div class="card-icon advanced">
-                            <i class="bi bi-lightbulb"></i>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="learning-card advanced">
+                        <div>
+                            <div class="card-icon advanced">
+                                <i class="bi bi-lightbulb"></i>
+                            </div>
+                            <h3 class="card-title">심화학습(수행평가)</h3>
+                            <p class="card-description">
+                               창의적 문제해결력과 고차원 사고력을 키우는<br>
+                               다양한 주제의 프로젝트 중심 심화 학습 단계입니다.
+                            </p>
                         </div>
-                        <h3 class="card-title">심화학습(수행평가)</h3>
-                        <p class="card-description">
-                            창의적 문제해결력과 고차원 사고력을 키우는<br>
-                            프로젝트 기반 심화 학습 및 수행평가 단계입니다.
-                        </p>
+                        <a href="심화학습.html" class="btn-enter advanced">
+                            <i class="bi bi-rocket-takeoff"></i> 심화학습(수행평가) 시작하기
+                        </a>
                     </div>
-                    <a href="심화학습.html" class="btn-enter advanced">
-                        <i class="bi bi-rocket-takeoff"></i>
-                        심화학습(수행평가) 시작하기
-                    </a>
-                </article>
+                </div>
 
                 <!-- 발전학습 카드 -->
-                <article class="learning-card development">
-                    <div>
-                        <div class="card-icon development">
-                            <i class="bi bi-trophy"></i>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="learning-card development">
+                        <div>
+                            <div class="card-icon development">
+                                <i class="bi bi-trophy"></i>
+                            </div>
+                            <h3 class="card-title">발전학습</h3>
+                            <p class="card-description">
+                                실전 프로젝트를 통해 기술 역량을 확장하고<br>
+                                스스로 기획·설계·제작까지 도전하는 단계입니다.
+                            </p>
                         </div>
-                        <h3 class="card-title">발전학습</h3>
-                        <p class="card-description">
-                            실전 프로젝트를 통해 기술 역량을 확장하고<br>
-                            스스로 기획·설계·제작까지 도전하는 단계입니다.
-                        </p>
+                        <a href="발전학습.html" class="btn-enter development">
+                            <i class="bi bi-star-fill"></i> 발전학습 시작하기
+                        </a>
                     </div>
-                    <a href="발전학습.html" class="btn-enter development">
-                        <i class="bi bi-star-fill"></i>
-                        발전학습 시작하기
-                    </a>
-                </article>
+                </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
