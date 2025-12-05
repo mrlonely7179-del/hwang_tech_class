@@ -2,6 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <!-- 스마트폰에서 화면에 맞게 보이도록 필수 설정 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> AI를 활용한 기술교과 자기주도학습 </title>
     
@@ -23,17 +24,18 @@
             padding: 0;
             overflow-x: hidden;
             background-color: #f1f5f9;
+            -webkit-text-size-adjust: 100%; /* 일부 브라우저 자동 확대 방지[web:68] */
         }
 
-        /* 1. 밝은 미래도시 배경 (여우 그림 제거) */
+        /* 1. 미래도시 배경 이미지 (여우 이미지 완전히 대체) */
         body::before {
             content: '';
             position: fixed;
             inset: 0;
-            /* 밝은 미래도시(고층 건물, 맑은 톤) 예시 이미지 */
+            /* 미래도시 스카이라인 사진 예시 (Unsplash, free)[web:23] */
             background:
-                linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(241,245,249,0.95)),
-                url('https://images.unsplash.com/photo-1501707305551-9b2adda5e527?auto=format&fit=crop&w=1920&q=80')
+                linear-gradient(to bottom, rgba(255,255,255,0.85), rgba(241,245,249,0.95)),
+                url('https://images.unsplash.com/photo-1526481280695-3c687fd543c0?auto=format&fit=crop&w=1920&q=80')
                 center/cover no-repeat;
             opacity: 1;
             z-index: -2;
@@ -57,7 +59,7 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            padding: 60px 20px 40px;
+            padding: 60px 16px 40px;
         }
 
         .hero-overlay {
@@ -72,17 +74,18 @@
             z-index: 10;
             text-align: center;
             color: #0f172a;
-            padding: 40px 20px;
+            padding: 32px 16px;
             backdrop-filter: blur(4px);
         }
         
-        /* 2. 제목·부제 글자 모바일에서 줄바꿈 최소화 (clamp로 자동 조정)[web:48][web:52] */
+        /* 3,4. 제목 설정 + 2,3. 모바일에서 짤리지 않도록 폰트 크기 조절(clamp)[web:65] */
         .hero-title {
-            font-size: clamp(1.7rem, 3.6vw, 3.1rem);  /* 최소, 화면 비율, 최대 */
+            font-size: clamp(1.6rem, 4vw, 2.8rem);
             font-weight: 900;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
             text-shadow: 0 8px 30px rgba(15,23,42,0.15);
-            white-space: nowrap; /* 가능하면 한 줄 유지 */
+            /* 줄바꿈 허용하되, 화면에 맞게 글자 크기 먼저 줄이도록 설정 */
+            white-space: normal;
         }
         
         .hero-title i {
@@ -91,11 +94,11 @@
         }
 
         .hero-subtitle {
-            font-size: clamp(1.1rem, 2.4vw, 1.4rem);
+            font-size: clamp(1rem, 2.6vw, 1.3rem);
             font-weight: 400;
-            margin-bottom: 28px;
+            margin-bottom: 24px;
             color: #1e293b;
-            white-space: nowrap;
+            white-space: normal;
         }
         
         .hero-subtitle i {
@@ -104,12 +107,13 @@
         }
 
         .hero-description {
-            font-size: 1.02rem;
+            font-size: clamp(0.9rem, 1.9vw, 1.05rem);
             max-width: 800px;
-            margin: 0 auto 36px;
+            margin: 0 auto 32px;
             line-height: 1.8;
             opacity: 0.95;
             color: #1f2933;
+            padding: 0 4px;
         }
         
         /* 아래로 스크롤 유도 아이콘 */
@@ -132,7 +136,7 @@
         
         .section-title {
             text-align: center;
-            font-size: 2.4rem;
+            font-size: clamp(1.7rem, 2.8vw, 2.3rem);
             font-weight: 700;
             color: #0f172a;
             margin-bottom: 40px;
@@ -146,7 +150,7 @@
         .learning-card {
             background: #ffffff;
             border-radius: 20px;
-            padding: 32px 26px;
+            padding: 28px 22px;
             margin-bottom: 30px;
             box-shadow: 0 16px 40px rgba(15,23,42,0.08);
             transition: all 0.35s ease;
@@ -187,14 +191,14 @@
         }
         
         .card-icon {
-            width: 90px;
-            height: 90px;
+            width: 80px;
+            height: 80px;
             border-radius: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.6rem;
-            margin: 0 auto 22px;
+            font-size: 2.3rem;
+            margin: 0 auto 20px;
             color: white;
         }
         
@@ -211,26 +215,26 @@
         }
         
         .card-title {
-            font-size: 1.9rem;
+            font-size: 1.7rem;
             font-weight: 700;
             color: #0f172a;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
             text-align: center;
         }
         
         .card-description {
-            font-size: 1.02rem;
+            font-size: 0.98rem;
             color: #4b5563;
             line-height: 1.8;
-            margin-bottom: 30px;
+            margin-bottom: 24px;
             text-align: center;
         }
         
         .btn-enter {
             width: 100%;
-            padding: 16px 22px;
+            padding: 14px 18px;
             border-radius: 999px;
-            font-size: 1.05rem;
+            font-size: 1rem;
             font-weight: 600;
             border: none;
             color: white;
@@ -265,7 +269,7 @@
         .footer {
             background: #0f172a;
             color: white;
-            padding: 30px 20px;
+            padding: 24px 16px;
             text-align: center;
         }
         
@@ -275,15 +279,27 @@
             font-size: 0.9rem;
         }
         
-        /* Responsive – 제목/부제는 이미 clamp로 조정, 추가로 여백만 조정 */
-        @media (max-width: 768px) {
+        /* 작은 화면에서 전체 여백/크기 조금 더 줄이기 */
+        @media (max-width: 576px) {
             .hero-section {
-                min-height: 70vh;
-                padding-top: 40px;
+                min-height: 75vh;
+                padding-top: 32px;
+            }
+
+            .hero-content {
+                padding: 24px 10px;
             }
 
             .hero-description {
-                font-size: 0.98rem;
+                font-size: 0.9rem;
+            }
+
+            .card-title {
+                font-size: 1.4rem;
+            }
+
+            .card-description {
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -293,18 +309,18 @@
     <section class="hero-section">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <!-- 3. 위 아이콘/뱃지 삭제 완료 -->
-            <!-- 4. 제목 문구 변경 -->
+            <!-- 제목: 요청하신 문구로 변경 -->
             <h1 class="hero-title">
                 <i class="bi bi-cpu"></i> AI를 활용한 자기주도 기술수업
             </h1>
             <p class="hero-subtitle">
                 <i class="bi bi-stars"></i> 인공지능과 함께하는 스마트 학습 여정
             </p>
+            <!-- 2. 요청하신 문구를 그대로 사용 (내용 수정 없음) -->
             <p class="hero-description">
-                AI 기술을 활용하여 학생 스스로 학습하고 성장하는 자기주도학습 플랫폼입니다.<br>
-                notebookLM, Google Form, Google AppSheet, 등 다양한 교육용 AI 도구를 통해<br>
-                여러분의 학습 경험을 혁신적으로 변화시켜 보세요.
+              AI 기술을 활용하여 학생 스스로 학습하고 성장하는 자기주도학습 플랫폼입니다.<br>
+              notebookLM, Google Form, Google AppSheet, 등 다양한 교육용 AI 도구를 통해<br>
+              여러분의 학습 경험을 혁신적으로 변화시켜 보세요.
             </p>
             <div class="float">
                 <i class="bi bi-chevron-double-down" style="font-size: 3rem;"></i>
