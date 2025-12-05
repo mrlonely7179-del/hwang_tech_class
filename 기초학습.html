@@ -20,7 +20,16 @@
         .btn-home:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.3); color: #D97706; }
         .content-section { padding: 60px 20px; }
         .section-title { font-size: 2rem; font-weight: 700; color: #92400E; margin-bottom: 40px; text-align: center; }
-
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); /* 5개 고정 */
+            gap: 12px; /* 카드 사이 간격 */
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
         .tech-card-wrapper {
             display: flex;
             justify-content: center;
