@@ -27,13 +27,14 @@
             -webkit-text-size-adjust: 100%;
         }
 
-        /* 1. 주신 미래도시 이미지로 교체 + 더 밝은 톤 */
+        /* 1. 주신 미래도시 이미지 + 진하게 보이도록 그라디언트 약하게 */
         body::before {
             content: '';
             position: fixed;
             inset: 0;
             background:
-                linear-gradient(to bottom, rgba(255,255,255,0.92), rgba(226,232,255,0.9)),
+                /* 투명도를 줄여서 이미지가 더 잘 보이게 */
+                linear-gradient(to bottom, rgba(255,255,255,0.25), rgba(226,232,255,0.15)),
                 url('https://images.unsplash.com/photo-1675326570919-946d728e9a25?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZnV0dXJpc3RpYyUyMGNpdHl8ZW58MHx8MHx8fDA%3D')
                 center/cover no-repeat;
             opacity: 1;
@@ -64,8 +65,8 @@
         .hero-overlay {
             position: absolute;
             inset: 0;
-            /* 너무 어두워지지 않도록 투명도 낮춤 */
-            background: linear-gradient(135deg, rgba(248,250,252,0.4), rgba(219,234,254,0.3));
+            /* 배경을 너무 흐리지 않도록 아주 옅게 */
+            background: linear-gradient(135deg, rgba(248,250,252,0.25), rgba(219,234,254,0.2));
             z-index: 1;
         }
         
@@ -81,10 +82,10 @@
         .hero-header {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 24px;
+            justify-content: center;  /* 기준은 가운데 */
+            gap: 32px;
             margin-bottom: 20px;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
         }
         
         .hero-title {
@@ -124,38 +125,35 @@
             padding: 0 4px;
         }
         
-        /* 1. 세련된 QR 코드 배지 (PC에서만 표시) */
+        /* 2. QR 코드 – 설명 삭제, 배경 제거, 심플하게 오른쪽 배치 */
         .qr-badge {
             display: inline-flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 12px;
-            border-radius: 18px;
-            background: radial-gradient(circle at 0 0, rgba(59,130,246,0.25), transparent 60%),
-                        rgba(15,23,42,0.9);
-            box-shadow: 0 18px 40px rgba(15,23,42,0.55);
-            border: 1px solid rgba(148,163,184,0.7);
+            padding: 0;
+            border-radius: 0;
+            background: transparent;   /* 배경색 제거 */
+            box-shadow: none;         /* 카드 그림자 제거 */
+            border: none;
         }
 
         .qr-badge-inner {
-            background: #020617;
-            padding: 10px;
-            border-radius: 14px;
+            background: transparent;   /* 내부 배경 제거 */
+            padding: 0;
+            border-radius: 0;
         }
 
         .qr-badge img {
             width: 180px;
             height: 180px;
-            border-radius: 12px;
+            border-radius: 16px;
             background: white;
+            box-shadow: 0 10px 28px rgba(15,23,42,0.4);  /* QR 자체만 살짝 떠 보이게 */
+            border: 1px solid rgba(148,163,184,0.6);
         }
 
         .qr-caption {
-            margin-top: 8px;
-            font-size: 0.78rem;
-            color: #e5e7eb;
-            opacity: 0.9;
+            display: none; /* 설명은 사용 안 함 */
         }
 
         /* 아래로 스크롤 유도 아이콘 */
@@ -321,7 +319,7 @@
             font-size: 0.9rem;
         }
 
-        /* 2. 모바일(768px 이하)에서는 QR 코드 숨기기 */
+        /* 모바일(768px 이하)에서는 QR 코드 숨기기 */
         @media (max-width: 768px) {
             .hero-header {
                 flex-direction: column;
@@ -350,16 +348,13 @@
                     </h1>
                 </div>
                 
-                <!-- QR 코드 배지 (PC에서만 표시) -->
+                <!-- QR 코드 (PC에서만 표시, 심플 스타일) -->
                 <div class="qr-badge">
                     <div class="qr-badge-inner">
                         <!-- 실제 URL로 data= 뒤를 바꾸세요 -->
                         <img 
                           src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://mrlonely7179-del.github.io/hwang_tech_class/index.html" 
                           alt="이 페이지로 접속하는 QR 코드">
-                    </div>
-                    <div class="qr-caption">
-                        스마트폰으로 스캔하여<br>이 수업 페이지에 바로 접속하기
                     </div>
                 </div>
             </div>
