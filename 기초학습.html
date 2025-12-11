@@ -22,7 +22,6 @@
         .section-title { font-size: 2rem; font-weight: 700; color: #92400E; margin-bottom: 40px; text-align: center; }
         .tech-card-wrapper { display: flex; justify-content: center; }
         
-        /* 6개 카드용 크기 조정 */
         .tech-card { 
             position: relative; 
             width: 100%; 
@@ -31,18 +30,24 @@
             overflow: hidden; 
             box-shadow: 0 12px 32px rgba(15, 23, 42, 0.16); 
             background-color: #ffffff; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .tech-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 48px rgba(15, 23, 42, 0.24);
         }
         
         .tech-card-bg { position: relative; height: 120px; background-size: cover; background-position: center; }
-        .tech-card-bg::after { content: ""; position: absolute; inset: 0; background-image: linear-gradient(to bottom, rgba(15,23,42,0.1), rgba(15,23,42,0.45)); }
+        .tech-card-bg::after { content: ""; position: absolute; inset: 0; background-image: linear-gradient(to bottom, rgba(15,23,42,0.05), rgba(15,23,42,0.4)); }
         
-        /* 새로운 6개 주제별 배경 이미지 */
-        .tech-card-bg.invention { background-image: url("https://images.pexels.com/photos/355948/pexels-photo-355948.jpeg?auto=compress&cs=tinysrgb&w=800"); }
-        .tech-card-bg.manufacturing { background-image: url("https://images.pexels.com/photos/1149831/pexels-photo-1149831.jpeg?auto=compress&cs=tinysrgb&w=800"); }
+        /* 세련된 배경 이미지 */
+        .tech-card-bg.invention { background-image: url("https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800"); }
+        .tech-card-bg.manufacturing { background-image: url("https://images.pexels.com/photos/precision-machines-china-factory-1-47047653.jpeg?auto=compress&cs=tinysrgb&w=800"); }
         .tech-card-bg.energy { background-image: url("https://images.pexels.com/photos/414837/pexels-photo-414837.jpeg?auto=compress&cs=tinysrgb&w=800"); }
-        .tech-card-bg.construction { background-image: url("https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&cs=tinysrgb&w=800"); }
-        .tech-card-bg.information { background-image: url("https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&w=800"); }
-        .tech-card-bg.biotechnology { background-image: url("https://images.pexels.com/photos/256262/pexels-photo-256262.jpeg?auto=compress&cs=tinysrgb&w=800"); }
+        .tech-card-bg.construction { background-image: url("https://images.pexels.com/photos/1647962/pexels-photo-1647962.jpeg?auto=compress&cs=tinysrgb&w=800"); }
+        .tech-card-bg.information { background-image: url("https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800"); }
+        .tech-card-bg.biotechnology { background-image: url("https://images.pexels.com/photos/3825517/pexels-photo-3825517.jpeg?auto=compress&cs=tinysrgb&w=800"); }
         
         .tech-card-body { background: #ffffff; padding: 26px 20px 22px 20px; }
         
@@ -58,12 +63,14 @@
             margin: -42px auto 16px auto; 
             box-shadow: 0 6px 18px rgba(15, 23, 42, 0.32); 
         }
-        .tech-icon.invention { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
-        .tech-icon.manufacturing { background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%); }
-        .tech-icon.energy { background: linear-gradient(135deg, #10B981 0%, #059669 100%); }
-        .tech-icon.construction { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
+        
+        /* 각 카드별 색상 - 빨강/주황/노랑/초록/파랑/보라 */
+        .tech-icon.invention { background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%); }
+        .tech-icon.manufacturing { background: linear-gradient(135deg, #F59E0B 0%, #EA580C 100%); }
+        .tech-icon.energy { background: linear-gradient(135deg, #EAB308 0%, #CA8A04 100%); }
+        .tech-icon.construction { background: linear-gradient(135deg, #10B981 0%, #059669 100%); }
         .tech-icon.information { background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%); }
-        .tech-icon.biotechnology { background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%); }
+        .tech-icon.biotechnology { background: linear-gradient(135deg, #A855F7 0%, #9333EA 100%); }
         
         .tech-title { font-size: 1.4rem; font-weight: 800; color: #0F172A; margin-bottom: 10px; text-align: center; }
         .tech-description { font-size: 0.88rem; color: #64748B; text-align: center; margin-bottom: 18px; line-height: 1.45; }
@@ -88,16 +95,16 @@
         }
         .btn-ai-learning:hover, .btn-worksheet:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(15, 23, 42, 0.26); color: white; }
         
-        .btn-ai-learning.invention { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
-        .btn-ai-learning.manufacturing { background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%); }
-        .btn-ai-learning.energy { background: linear-gradient(135deg, #10B981 0%, #059669 100%); }
-        .btn-ai-learning.construction { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
+        /* AI 학습 버튼 색상 */
+        .btn-ai-learning.invention { background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%); }
+        .btn-ai-learning.manufacturing { background: linear-gradient(135deg, #F59E0B 0%, #EA580C 100%); }
+        .btn-ai-learning.energy { background: linear-gradient(135deg, #EAB308 0%, #CA8A04 100%); }
+        .btn-ai-learning.construction { background: linear-gradient(135deg, #10B981 0%, #059669 100%); }
         .btn-ai-learning.information { background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%); }
-        .btn-ai-learning.biotechnology { background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%); }
+        .btn-ai-learning.biotechnology { background: linear-gradient(135deg, #A855F7 0%, #9333EA 100%); }
         
         .btn-worksheet { background: linear-gradient(135deg, #64748B 0%, #475569 100%); }
         .btn-ai-learning.disabled, .btn-worksheet.disabled { background: linear-gradient(135deg, #9CA3AF 0%, #6B7280 100%); cursor: not-allowed; opacity: 0.6; }
-        .coming-soon { display: inline-block; background: #FEE2E2; color: #991B1B; padding: 4px 10px; border-radius: 12px; font-size: 0.78rem; font-weight: 600; margin-top: 8px; }
         
         @media (max-width: 768px) { 
             .page-header h1 { font-size: 1.8rem; } 
@@ -120,7 +127,7 @@
             <h2 class="section-title"><i class="bi bi-gear-fill"></i> 기술 영역 선택</h2>
             
             <div class="row justify-content-center g-3">
-                <!-- 1. 기술과 발명 -->
+                <!-- 1. 기술과 발명 (빨강) -->
                 <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6">
                     <div class="tech-card-wrapper">
                         <article class="tech-card">
@@ -142,13 +149,12 @@
                                         <i class="bi bi-lock-fill"></i><span>준비 중</span>
                                     </button>
                                 </div>
-                                <span class="coming-soon">곧 공개됩니다</span>
                             </div>
                         </article>
                     </div>
                 </div>
 
-                <!-- 2. 재료와 제조 -->
+                <!-- 2. 재료와 제조 (주황) -->
                 <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6">
                     <div class="tech-card-wrapper">
                         <article class="tech-card">
@@ -175,7 +181,7 @@
                     </div>
                 </div>
 
-                <!-- 3. 에너지와 수송 -->
+                <!-- 3. 에너지와 수송 (노랑) -->
                 <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6">
                     <div class="tech-card-wrapper">
                         <article class="tech-card">
@@ -197,12 +203,12 @@
                                         <i class="bi bi-lock-fill"></i><span>준비 중</span>
                                     </button>
                                 </div>
-                                <span class="coming-soon">곧 공개됩니다</span>
                             </div>
                         </article>
                     </div>
                 </div>
-                <!-- 4. 구조물과 건설 -->
+
+                <!-- 4. 구조물과 건설 (초록) -->
                 <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6">
                     <div class="tech-card-wrapper">
                         <article class="tech-card">
@@ -229,7 +235,7 @@
                     </div>
                 </div>
 
-                <!-- 5. 정보통신과 로봇 -->
+                <!-- 5. 정보통신과 로봇 (파랑) -->
                 <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6">
                     <div class="tech-card-wrapper">
                         <article class="tech-card">
@@ -251,13 +257,12 @@
                                         <i class="bi bi-lock-fill"></i><span>준비 중</span>
                                     </button>
                                 </div>
-                                <span class="coming-soon">곧 공개됩니다</span>
                             </div>
                         </article>
                     </div>
                 </div>
 
-                <!-- 6. 생명기술과 융합 -->
+                <!-- 6. 생명기술과 융합 (보라) -->
                 <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6">
                     <div class="tech-card-wrapper">
                         <article class="tech-card">
@@ -279,7 +284,6 @@
                                         <i class="bi bi-lock-fill"></i><span>준비 중</span>
                                     </button>
                                 </div>
-                                <span class="coming-soon">곧 공개됩니다</span>
                             </div>
                         </article>
                     </div>
@@ -299,5 +303,3 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
-              
