@@ -24,15 +24,14 @@
             padding: 0;
             overflow-x: hidden;
             background-color: #f1f5f9;
-            -webkit-text-size-adjust: 100%; /* 일부 브라우저 자동 확대 방지[web:68] */
+            -webkit-text-size-adjust: 100%;
         }
 
-        /* 1. 미래도시 배경 이미지 (여우 이미지 완전히 대체) */
+        /* 미래도시 배경 이미지 */
         body::before {
             content: '';
             position: fixed;
             inset: 0;
-            /* 미래도시 스카이라인 사진 예시 (Unsplash, free)[web:23] */
             background:
                 linear-gradient(to bottom, rgba(255,255,255,0.85), rgba(241,245,249,0.95)),
                 url('https://images.unsplash.com/photo-1526481280695-3c687fd543c0?auto=format&fit=crop&w=1920&q=80')
@@ -78,13 +77,11 @@
             backdrop-filter: blur(4px);
         }
         
-        /* 3,4. 제목 설정 + 2,3. 모바일에서 짤리지 않도록 폰트 크기 조절(clamp)[web:65] */
         .hero-title {
             font-size: clamp(1.6rem, 4vw, 2.8rem);
             font-weight: 900;
             margin-bottom: 16px;
             text-shadow: 0 8px 30px rgba(15,23,42,0.15);
-            /* 줄바꿈 허용하되, 화면에 맞게 글자 크기 먼저 줄이도록 설정 */
             white-space: normal;
         }
         
@@ -213,28 +210,28 @@
         .card-icon.development {
             background: linear-gradient(135deg, #F472B6 0%, #EC4899 100%);
         }
-        
+
         .card-title {
-            font-size: 2.0rem;
+            font-size: 1.9rem;
             font-weight: 700;
             color: #0f172a;
-            margin-bottom: 14px;
+            margin-bottom: 18px;
             text-align: center;
         }
-        
+
         .card-description {
-            font-size: 1.15rem;
+            font-size: 1.05rem;
             color: #4b5563;
-            line-height: 1.8;
-            margin-bottom: 24px;
+            line-height: 1.9;
+            margin-bottom: 26px;
             text-align: center;
         }
-        
+
         .btn-enter {
             width: 100%;
-            padding: 14px 18px;
+            padding: 16px 22px;
             border-radius: 999px;
-            font-size: 1rem;
+            font-size: 1.08rem;
             font-weight: 600;
             border: none;
             color: white;
@@ -265,6 +262,43 @@
             color: white;
         }
         
+        /* QR 코드 버튼 (오른쪽 상단) */
+        .qr-wrapper {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            z-index: 20;
+        }
+
+        .qr-wrapper img {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(15,23,42,0.25);
+            background: white;
+        }
+
+        @media (max-width: 576px) {
+            .hero-section {
+                min-height: 75vh;
+                padding-top: 32px;
+            }
+
+            .hero-content {
+                padding: 24px 10px;
+            }
+
+            .hero-description {
+                font-size: 0.95rem;
+            }
+
+            /* 모바일에서는 QR을 제목 위 오른쪽에 작게 유지 */
+            .qr-wrapper img {
+                width: 64px;
+                height: 64px;
+            }
+        }
+
         /* Footer */
         .footer {
             background: #0f172a;
@@ -278,50 +312,31 @@
             opacity: 0.85;
             font-size: 0.9rem;
         }
-        
-        /* 작은 화면에서 전체 여백/크기 조금 더 줄이기 */
-        @media (max-width: 576px) {
-            .hero-section {
-                min-height: 75vh;
-                padding-top: 32px;
-            }
-
-            .hero-content {
-                padding: 24px 10px;
-            }
-
-            .hero-description {
-                font-size: 0.9rem;
-            }
-
-            .card-title {
-                font-size: 1.4rem;
-            }
-
-            .card-description {
-                font-size: 0.9rem;
-            }
-        }
     </style>
 </head>
 <body>
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-overlay"></div>
+
+        <!-- QR 코드: 오른쪽 상단 -->
+        <div class="qr-wrapper">
+            <!-- 여기에 실제 페이지 URL을 넣으세요 -->
+            <img 
+              src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mrlonely7179-del.github.io/ai-tech/index.html" 
+              alt="이 페이지로 접속하는 QR 코드">
+        </div>
+
         <div class="hero-content">
-            <!-- 제목: 요청하신 문구로 변경 -->
             <h1 class="hero-title">
                 <i class="bi bi-cpu"></i> AI를 활용한 자기주도 기술수업
             </h1>
             <p class="hero-subtitle">
                 <i class="bi bi-stars"></i> 인공지능과 함께하는 스마트 학습 여정
             </p>
-            <!-- 2. 요청하신 문구를 그대로 사용 (내용 수정 없음) -->
             <p class="hero-description">
-              AI 기술을 활용하여 학생 스스로 학습하고 성장하는<br>
-              자기주도학습 플랫폼입니다.<br>
-              notebookLM, Google Form, AppSheet 등<br>
-              다양한 교육용 AI 도구를 통해<br>
+              AI 기술을 활용하여 학생 스스로 학습하고 성장하는 자기주도학습 플랫폼입니다.<br>
+              notebookLM, Google Form, Google AppSheet, 등 다양한 교육용 AI 도구를 통해<br>
               여러분의 학습 경험을 혁신적으로 변화시켜 보세요.
             </p>
             <div class="float">
@@ -348,7 +363,7 @@
                             <h3 class="card-title">기초학습</h3>
                             <p class="card-description">
                                 AI를 활용하여<br>
-                                기술의 5대 영역을 이해하고<br>
+                                기술의 6대 영역을 이해하고<br>
                                 핵심 개념과 기본 원리를<br>
                                 차근차근 익히는 단계입니다.
                             </p>
@@ -407,7 +422,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p><i class="bi bi-c-circle"></i> 2025 AI를 활용한 기술교과 자기주도학습 페이지. All rights reserved.</p>
+            <p><i class="bi bi-c-circle"></i> 2026 AI를 활용한 기술교과 자기주도학습 페이지. All rights reserved.</p>
         </div>
     </footer>
 
