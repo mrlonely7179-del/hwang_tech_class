@@ -27,13 +27,12 @@
             -webkit-text-size-adjust: 100%;
         }
 
-        /* 1. 주신 미래도시 이미지 + 진하게 보이도록 그라디언트 약하게 */
+        /* 미래도시 배경 + 이미지가 더 잘 보이도록 */
         body::before {
             content: '';
             position: fixed;
             inset: 0;
             background:
-                /* 투명도를 줄여서 이미지가 더 잘 보이게 */
                 linear-gradient(to bottom, rgba(255,255,255,0.25), rgba(226,232,255,0.15)),
                 url('https://images.unsplash.com/photo-1675326570919-946d728e9a25?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZnV0dXJpc3RpYyUyMGNpdHl8ZW58MHx8MHx8fDA%3D')
                 center/cover no-repeat;
@@ -65,8 +64,8 @@
         .hero-overlay {
             position: absolute;
             inset: 0;
-            /* 배경을 너무 흐리지 않도록 아주 옅게 */
-            background: linear-gradient(135deg, rgba(248,250,252,0.25), rgba(219,234,254,0.2));
+            /* 텍스트를 살짝 받쳐주는 밝은 오버레이 */
+            background: linear-gradient(135deg, rgba(248,250,252,0.35), rgba(219,234,254,0.25));
             z-index: 1;
         }
         
@@ -78,23 +77,34 @@
             padding: 32px 16px;
         }
 
-        /* QR + 제목을 가로 정렬 (PC) */
+        /* 제목+QR를 양쪽으로 배치: 제목은 중앙 쪽, QR은 오른쪽 끝으로 */
         .hero-header {
             display: flex;
             align-items: center;
-            justify-content: center;  /* 기준은 가운데 */
-            gap: 32px;
+            justify-content: center;
+            gap: 24px;
             margin-bottom: 20px;
             flex-wrap: nowrap;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-title-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
         }
         
         .hero-title {
-            font-size: clamp(2rem, 4.2vw, 3rem);
+            font-size: clamp(2.1rem, 4.4vw, 3.1rem);
             font-weight: 900;
             margin: 0;
-            text-shadow: 0 6px 20px rgba(15,23,42,0.25);
             white-space: normal;
-            color: #0f172a;
+            color: #0b1120;
+            /* 배경 위에서 더 선명하게 보이도록 텍스트 그림자 */
+            text-shadow: 0 0 8px rgba(255,255,255,0.9),
+                         0 4px 18px rgba(15,23,42,0.5);
         }
         
         .hero-title i {
@@ -103,11 +113,12 @@
         }
 
         .hero-subtitle {
-            font-size: clamp(1.1rem, 2.4vw, 1.5rem);
-            font-weight: 400;
-            margin-bottom: 24px;
-            color: #1e293b;
+            font-size: clamp(1.15rem, 2.5vw, 1.6rem);
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #111827;
             white-space: normal;
+            text-shadow: 0 0 6px rgba(255,255,255,0.8);
         }
         
         .hero-subtitle i {
@@ -115,45 +126,52 @@
             margin-right: 6px;
         }
 
+        .hero-description-box {
+            max-width: 860px;
+            margin: 0 auto 30px;
+            padding: 18px 20px;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.82); /* 텍스트만 살짝 흰 박스로 강조 */
+            box-shadow: 0 18px 45px rgba(15,23,42,0.15);
+        }
+
         .hero-description {
-            font-size: clamp(1rem, 2vw, 1.15rem);
-            max-width: 800px;
-            margin: 0 auto 32px;
+            font-size: clamp(1.02rem, 2.1vw, 1.2rem);
             line-height: 1.9;
-            opacity: 0.96;
+            opacity: 0.98;
             color: #111827;
-            padding: 0 4px;
+            margin: 0;
         }
         
-        /* 2. QR 코드 – 설명 삭제, 배경 제거, 심플하게 오른쪽 배치 */
+        /* QR 코드 – 심플 스타일, 더 오른쪽으로 */
         .qr-badge {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             padding: 0;
-            border-radius: 0;
-            background: transparent;   /* 배경색 제거 */
-            box-shadow: none;         /* 카드 그림자 제거 */
+            background: transparent;
+            box-shadow: none;
             border: none;
+            margin-left: 12px; /* 제목 기준으로 약간 더 오른쪽으로 밀기 */
         }
 
         .qr-badge-inner {
-            background: transparent;   /* 내부 배경 제거 */
+            background: transparent;
             padding: 0;
             border-radius: 0;
         }
 
         .qr-badge img {
-            width: 180px;
-            height: 180px;
+            width: 190px;
+            height: 190px;
             border-radius: 16px;
             background: white;
-            box-shadow: 0 10px 28px rgba(15,23,42,0.4);  /* QR 자체만 살짝 떠 보이게 */
+            box-shadow: 0 10px 28px rgba(15,23,42,0.4);
             border: 1px solid rgba(148,163,184,0.6);
         }
 
         .qr-caption {
-            display: none; /* 설명은 사용 안 함 */
+            display: none;
         }
 
         /* 아래로 스크롤 유도 아이콘 */
@@ -329,6 +347,11 @@
             .qr-badge {
                 display: none;  /* 모바일에서 QR 완전히 숨김 */
             }
+
+            .hero-description-box {
+                padding: 14px 14px;
+                border-radius: 14px;
+            }
         }
     </style>
 </head>
@@ -342,16 +365,15 @@
             <!-- QR + 제목 묶음 -->
             <div class="hero-header">
                 <!-- 제목 -->
-                <div>
+                <div class="hero-title-wrapper">
                     <h1 class="hero-title">
                         <i class="bi bi-cpu"></i> AI를 활용한 자기주도 기술수업
                     </h1>
                 </div>
                 
-                <!-- QR 코드 (PC에서만 표시, 심플 스타일) -->
+                <!-- QR 코드 (PC에서만 표시, 오른쪽으로 배치) -->
                 <div class="qr-badge">
                     <div class="qr-badge-inner">
-                        <!-- 실제 URL로 data= 뒤를 바꾸세요 -->
                         <img 
                           src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://mrlonely7179-del.github.io/hwang_tech_class/index.html" 
                           alt="이 페이지로 접속하는 QR 코드">
@@ -362,11 +384,15 @@
             <p class="hero-subtitle">
                 <i class="bi bi-stars"></i> 인공지능과 함께하는 스마트 학습 여정
             </p>
-            <p class="hero-description">
-              AI 기술을 활용하여 학생 스스로 학습하고 성장하는 자기주도학습 플랫폼입니다.<br>
-              notebookLM, Google Form, Google AppSheet, 등 다양한 교육용 AI 도구를 통해<br>
-              여러분의 학습 경험을 혁신적으로 변화시켜 보세요.
-            </p>
+
+            <!-- 텍스트를 받쳐주는 반투명 박스 -->
+            <div class="hero-description-box">
+                <p class="hero-description">
+                  AI 기술을 활용하여 학생 스스로 학습하고 성장하는 자기주도학습 플랫폼입니다.<br>
+                  notebookLM, Google Form, Google AppSheet, 등 다양한 교육용 AI 도구를 통해<br>
+                  여러분의 학습 경험을 혁신적으로 변화시켜 보세요.
+                </p>
+            </div>
 
             <div class="float">
                 <i class="bi bi-chevron-double-down" style="font-size: 3rem;"></i>
