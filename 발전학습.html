@@ -18,32 +18,12 @@
         }
         
         body {
-            background: linear-gradient(135deg, #FCE7F3 0%, #F9A8D4 100%);
+            background: radial-gradient(circle at top, #fdf2ff 0%, #fce7f3 25%, #e0f2fe 60%, #eef2ff 100%);
             min-height: 100vh;
-            padding: 0;
             margin: 0;
         }
-        
-        /* Header */
-        .page-header {
-            background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-        }
-        
-        .page-header h1 {
-            font-size: 2.5rem;
-            font-weight: 900;
-            margin-bottom: 10px;
-        }
-        
-        .page-header p {
-            font-size: 1.2rem;
-            opacity: 0.95;
-        }
-        
+
+        /* 전체 레이아웃 */
         .nav-home {
             position: fixed;
             top: 20px;
@@ -52,13 +32,13 @@
         }
         
         .btn-home {
-            background: white;
-            color: #EC4899;
-            padding: 12px 25px;
-            border-radius: 50px;
+            background: rgba(255,255,255,0.9);
+            color: #2563EB;
+            padding: 10px 22px;
+            border-radius: 999px;
             text-decoration: none;
             font-weight: 600;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 20px rgba(15,23,42,0.25);
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
@@ -66,155 +46,287 @@
         }
         
         .btn-home:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            color: #DB2777;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(15,23,42,0.35);
+            color: #1D4ED8;
+        }
+
+        /* 헤더 */
+        .page-header {
+            background: radial-gradient(circle at top left,#312e81 0%,#1e3a8a 35%,#0f172a 100%);
+            color: white;
+            padding: 80px 20px 60px;
+            text-align: center;
+            box-shadow: 0 16px 40px rgba(15,23,42,0.7);
+            position: relative;
+            overflow: hidden;
         }
         
-        /* Content */
+        .page-header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+              radial-gradient(circle at 10% 20%, rgba(244,114,182,0.3) 0, transparent 50%),
+              radial-gradient(circle at 80% 80%, rgba(129,140,248,0.35) 0, transparent 55%);
+            opacity: 0.9;
+            pointer-events: none;
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .page-header h1 {
+            font-size: 2.6rem;
+            font-weight: 900;
+            margin-bottom: 14px;
+            letter-spacing: 0.06em;
+        }
+        
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            margin-bottom: 10px;
+        }
+
+        .page-header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: rgba(15,23,42,0.7);
+            border: 1px solid rgba(191,219,254,0.5);
+            font-size: 0.85rem;
+            margin-bottom: 14px;
+        }
+
+        /* 메인 섹션 공통 */
         .content-section {
-            padding: 60px 20px;
+            padding: 50px 20px 70px;
         }
         
         .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #831843;
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: #0f172a;
             margin-bottom: 30px;
             text-align: center;
-            display: flex;
+        }
+
+        .section-subtitle {
+            font-size: 0.98rem;
+            color: #4b5563;
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        /* 프로젝트 카드 레이아웃 */
+        .project-card-wrap {
+            border-radius: 24px;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(255,255,255,0.96), rgba(239,246,255,0.96));
+            box-shadow: 0 18px 45px rgba(15,23,42,0.15);
+            transition: transform 0.35s ease, box-shadow 0.35s ease, border 0.3s ease;
+            border: 1px solid rgba(226,232,240,0.9);
+            height: 100%;
+        }
+
+        .project-card-wrap:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 26px 70px rgba(15,23,42,0.28);
+            border-color: rgba(129,140,248,0.7);
+        }
+
+        .project-image-area {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image-area img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.8s ease;
+        }
+
+        .project-card-wrap:hover .project-image-area img {
+            transform: scale(1.06);
+        }
+
+        .project-image-label {
+            position: absolute;
+            left: 18px;
+            bottom: 16px;
+            padding: 4px 12px;
+            border-radius: 999px;
+            background: rgba(15,23,42,0.75);
+            color: #e5e7eb;
+            font-size: 0.78rem;
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 15px;
+            gap: 6px;
         }
-        
-        .category-box {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
+
+        .project-body {
+            padding: 22px 22px 20px;
         }
-        
-        .category-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
-        
-        .category-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #831843;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid #F9A8D4;
-            display: flex;
+
+        .level-badge {
+            display: inline-flex;
             align-items: center;
-            gap: 10px;
-        }
-        
-        .ai-feature-card {
-            background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 15px;
-            border-left: 5px solid #F59E0B;
-            transition: all 0.3s ease;
-        }
-        
-        .ai-feature-card:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(245, 158, 11, 0.3);
-        }
-        
-        .ai-feature-card h5 {
-            color: #92400E;
-            font-weight: 700;
+            gap: 8px;
+            border-radius: 999px;
+            padding: 4px 12px;
+            font-size: 0.83rem;
             margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .level-easy {
+            background: rgba(16,185,129,0.08);
+            color: #047857;
+            border: 1px solid rgba(16,185,129,0.4);
+        }
+
+        .level-medium {
+            background: rgba(245,158,11,0.08);
+            color: #b45309;
+            border: 1px solid rgba(245,158,11,0.5);
+        }
+
+        .level-hard {
+            background: rgba(239,68,68,0.08);
+            color: #b91c1c;
+            border: 1px solid rgba(239,68,68,0.55);
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 6px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
-        
-        .ai-feature-card p {
-            color: #78350F;
-            margin: 0;
+
+        .project-subtitle {
+            font-size: 0.92rem;
+            color: #6b7280;
+            margin-bottom: 14px;
+        }
+
+        .project-desc {
+            font-size: 0.9rem;
+            color: #4b5563;
+            margin-bottom: 14px;
             line-height: 1.6;
         }
-        
-        .ai-badge {
-            background: linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
+
+        .project-tags {
+            margin-bottom: 10px;
+        }
+
+        .tag-pill {
             display: inline-flex;
             align-items: center;
             gap: 5px;
+            font-size: 0.78rem;
+            padding: 4px 10px;
+            margin: 3px 4px 3px 0;
+            border-radius: 999px;
+            background: rgba(243,244,246,0.95);
+            color: #374151;
+            border: 1px solid rgba(209,213,219,0.9);
         }
-        
-        .project-card {
-            background: linear-gradient(135deg, #E0E7FF 0%, #C7D2FE 100%);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 15px;
-            border-left: 5px solid #6366F1;
-            transition: all 0.3s ease;
+
+        .tag-pill i {
+            font-size: 0.86rem;
         }
-        
-        .project-card:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
-        }
-        
-        .project-card h5 {
-            color: #3730A3;
-            font-weight: 700;
-            margin-bottom: 10px;
+
+        .project-footer {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 10px;
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 6px;
         }
-        
-        .project-card p {
-            color: #4338CA;
-            margin: 0;
-            line-height: 1.6;
-        }
-        
-        .skill-badge {
-            background: linear-gradient(135deg, #FCE7F3 0%, #F9A8D4 100%);
-            color: #831843;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            display: inline-block;
-            margin: 5px;
-            border: 2px solid #F472B6;
-            transition: all 0.3s ease;
-        }
-        
-        .skill-badge:hover {
-            background: #F472B6;
+
+        .btn-start {
+            border-radius: 999px;
+            padding: 7px 16px;
+            font-size: 0.85rem;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg,#2563eb,#4f46e5);
             color: white;
-            transform: scale(1.05);
+            box-shadow: 0 10px 24px rgba(37,99,235,0.4);
+            transition: all 0.25s ease;
         }
-        
+
+        .btn-start:hover {
+            background: linear-gradient(135deg,#1d4ed8,#4338ca);
+            box-shadow: 0 14px 30px rgba(37,99,235,0.55);
+            transform: translateY(-1px);
+            color: white;
+        }
+
+        /* 소개 카드 */
+        .intro-card {
+            border-radius: 20px;
+            background: rgba(15,23,42,0.03);
+            border: 1px solid rgba(148,163,184,0.35);
+            padding: 22px 20px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(12px);
+        }
+
+        .intro-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #111827;
+        }
+
+        .intro-card p {
+            font-size: 0.9rem;
+            color: #4b5563;
+            margin-bottom: 6px;
+        }
+
+        .intro-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 999px;
+            margin-right: 6px;
+            margin-top: 4px;
+            background: rgba(15,23,42,0.8);
+            color: #e5e7eb;
+        }
+
         @media (max-width: 768px) {
+            .page-header {
+                padding-top: 70px;
+            }
             .page-header h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
-            
             .section-title {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
             }
-            
             .nav-home {
                 position: static;
-                margin: 20px;
+                margin: 16px;
             }
         }
     </style>
@@ -229,145 +341,175 @@
 
     <!-- Header -->
     <header class="page-header">
-        <h1><i class="bi bi-trophy-fill"></i> 발전학습</h1>
-        <p>실전 프로젝트와 협업을 통해 전문적인 역량을 키워보세요</p>
+        <div class="page-header-content">
+            <div class="page-header-badge">
+                <i class="bi bi-cpu"></i>
+                <span>발전학습 · AI 자기주도 프로젝트</span>
+            </div>
+            <h1><i class="bi bi-trophy-fill me-1"></i> 발전학습 - AI 자기주도학습</h1>
+            <p>바이브코딩으로 실제 세상 문제를 해결하는 제품을 직접 설계·개발해 보세요.</p>
+            <p style="font-size:0.9rem; opacity:0.8;">난이도 ‘하·중·상’ 3단계 프로젝트로 코딩, 메이킹, 인공지능 역량을 동시에 성장시킵니다.</p>
+        </div>
     </header>
 
     <!-- Content -->
     <section class="content-section">
         <div class="container">
-            
-            <!-- 핵심 역량 개발 섹션 -->
-            <div class="category-box">
-                <h2 class="category-title">
-                    <i class="bi bi-star-fill"></i> 바이블 코딩을 만드는 기술
-                </h2>
-                
-                <div class="skill-badge">
-                    <i class="bi bi-code-slash"></i> 베이스코드 활용법
-                </div>
-                <div class="skill-badge">
-                    <i class="bi bi-gear-fill"></i> 백엔드 분석
-                </div>
-                <div class="skill-badge">
-                    <i class="bi bi-bug-fill"></i> 체계적 디버깅
-                </div>
-            </div>
-
-            <!-- AI 프로젝트 섹션 -->
-            <div class="category-box">
-                <h2 class="category-title">
-                    <i class="bi bi-rocket-takeoff-fill"></i> AI 프로젝트 실습
-                    <span class="ai-badge"><i class="bi bi-stars"></i> AI</span>
-                </h2>
-
-                <div class="ai-feature-card">
-                    <h5>
-                        <i class="bi bi-film"></i> 
-                        베이스코드 영화법
-                    </h5>
-                    <p>AI를 활용한 영상 콘텐츠 제작 및 편집 기술을 배워보세요</p>
-                </div>
-
-                <div class="ai-feature-card">
-                    <h5>
-                        <i class="bi bi-palette-fill"></i> 
-                        웰컴 대회 바우처 오염 만들기 (아타이드 코딩)
-                    </h5>
-                    <p>창의적인 디자인과 코딩을 결합한 프로젝트를 완성하세요</p>
-                </div>
-
-                <div class="ai-feature-card">
-                    <h5>
-                        <i class="bi bi-eye-fill"></i> 
-                        이석윤 컨설팅 업 만들기 (업체천 코딩)
-                    </h5>
-                    <p>전문가 수준의 웹 애플리케이션을 개발해보세요</p>
-                </div>
-            </div>
-
-            <!-- 실전 프로젝트 섹션 -->
-            <div class="category-box">
-                <h2 class="category-title">
-                    <i class="bi bi-briefcase-fill"></i> 실전 프로젝트
-                    <span class="ai-badge"><i class="bi bi-stars"></i> AI</span>
-                </h2>
-
-                <div class="project-card">
-                    <h5>
-                        <i class="bi bi-list-check"></i> 
-                        수행평가 과제 출제 (구글 설문지)
-                    </h5>
-                    <p>Google Forms를 활용하여 체계적인 평가 시스템을 구축하세요</p>
-                </div>
-
-                <div class="project-card">
-                    <h5>
-                        <i class="bi bi-globe2"></i> 
-                        과제 내용 작성 및 첨부 웹 자기평가
-                    </h5>
-                    <p>웹 기반 자기평가 시스템을 개발하고 운영해보세요</p>
-                </div>
-
-                <div class="project-card">
-                    <h5>
-                        <i class="bi bi-bar-chart-fill"></i> 
-                        성적은 부모한 시험과 메이킹 처음
-                    </h5>
-                    <p>데이터 분석과 시각화를 통한 성적 관리 시스템을 만들어보세요</p>
-                </div>
-
-                <div class="project-card">
-                    <h5>
-                        <i class="bi bi-journal-text"></i> 
-                        제출 교사용 페이지 제공 및 관리특색 연습
-                    </h5>
-                    <p>교사용 관리 페이지를 설계하고 구현해보세요</p>
-                </div>
-            </div>
-
-            <!-- 교육용 페이지 개발 섹션 -->
-            <div class="category-box">
-                <h2 class="category-title">
-                    <i class="bi bi-window-desktop"></i> 교육용 페이지 개발
-                </h2>
-
-                <div class="ai-feature-card">
-                    <h5>
-                        <i class="bi bi-file-code-fill"></i> 
-                        교육용 페이지 구축 APPSheet로 개발 예정
-                    </h5>
-                    <p>AppSheet를 활용한 No-Code/Low-Code 개발 경험을 쌓으세요</p>
-                </div>
-
-                <div class="row mt-4">
-                    <div class="col-md-6">
-                        <div class="ai-feature-card">
-                            <h5>
-                                <i class="bi bi-people-fill"></i> 
-                                학습 관리 위한 교사용 법 - 구글 APPSheet로 개발 예정
-                            </h5>
-                            <p>교사용 학습 관리 시스템 구축</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="ai-feature-card">
-                            <h5>
-                                <i class="bi bi-person-check-fill"></i> 
-                                학습 관리 위한 교사용 법
-                            </h5>
-                            <p>교사 전용 관리 도구 개발</p>
+            <!-- 상단 소개 -->
+            <div class="row justify-content-center mb-4">
+                <div class="col-lg-10">
+                    <div class="intro-card">
+                        <h3><i class="bi bi-magic me-1"></i> 이 페이지에서 무엇을 하나요?</h3>
+                        <p>바이브코딩을 기반으로 한 3가지 실전 프로젝트 중 하나를 선택해, 설계 → 제작 → 테스트 → 피드백까지 전 과정을 경험합니다.</p>
+                        <p>각 프로젝트는 실제로 활용 가능한 ‘제품’ 만들기를 목표로 하며, 하드웨어·소프트웨어·AI를 통합적으로 다룹니다.</p>
+                        <div class="mt-2">
+                            <span class="intro-chip"><i class="bi bi-lightning-charge-fill"></i> 실전 중심</span>
+                            <span class="intro-chip"><i class="bi bi-robot"></i> AI 활용</span>
+                            <span class="intro-chip"><i class="bi bi-people"></i> 협업과 피드백</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 최종 역량 -->
-            <div class="category-box">
-                <h2 class="category-title">
-                    <i class="bi bi-award-fill"></i> 발전학습 완성 목표
-                </h2>
-                <div class="alert" style="background: linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%); border: none; color: #1E40AF; border-left: 5px solid #3B82F6;">
-                    <h5><i class="bi bi-lightbulb-fill"></i> 이 단계를 마치면...</h5>
-                    <ul style="margin-bottom: 0; line-height: 2;">
-                        <li>실전 프로젝
+            <!-- 프로젝트 카드 3개 -->
+            <div class="row g-4">
+                <!-- 난이도 하: 하이브리드 태양광 자동차 -->
+                <div class="col-md-4">
+                    <div class="project-card-wrap">
+                        <div class="project-image-area">
+                            <!-- 실제 사용 시, src 를 Canva / AI 생성 이미지로 교체 -->
+                            <img src="images/solar-hybrid-car.jpg" alt="태양광 패널과 배터리를 이용한 하이브리드 소형 자동차 콘셉트 일러스트">
+                            <div class="project-image-label">
+                                <i class="bi bi-sun-fill text-warning"></i>
+                                <span>하이브리드 태양광 자동차 콘셉트 이미지</span>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <div class="level-badge level-easy">
+                                <i class="bi bi-emoji-smile"></i> 난이도 · 하
+                            </div>
+                            <h3 class="project-title">
+                                <i class="bi bi-car-front-fill text-emerald-500"></i>
+                                하이브리드 태양광 자동차 만들기
+                            </h3>
+                            <p class="project-subtitle">태양광 패널과 배터리를 이용해 움직이는 친환경 스마트 자동차를 설계합니다.</p>
+                            <p class="project-desc">
+                                태양광 패널, 모터, 배터리를 결합해 ‘빛으로 움직이는 자동차’를 직접 제작하고, 주행 효율을 데이터로 비교·분석합니다.
+                                간단한 센서와 코딩을 더해 자동 정지·자동 출발과 같은 스마트 기능도 구현해 봅니다.
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag-pill"><i class="bi bi-sun"></i> 태양광 에너지</span>
+                                <span class="tag-pill"><i class="bi bi-battery-charging"></i> 전기·배터리</span>
+                                <span class="tag-pill"><i class="bi bi-graph-up"></i> 주행 데이터 분석</span>
+                                <span class="tag-pill"><i class="bi bi-code-slash"></i> 초급 코딩</span>
+                            </div>
+                            <div class="project-footer">
+                                <span><i class="bi bi-clock"></i> 권장: 6~8차시</span>
+                                <button class="btn-start">
+                                    <i class="bi bi-play-fill"></i> 프로젝트 시작
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 난이도 중: 맞춤형 비상구 표시장치 -->
+                <div class="col-md-4">
+                    <div class="project-card-wrap">
+                        <div class="project-image-area">
+                            <img src="images/custom-exit-sign.jpg" alt="다양한 방향 화살표와 LED가 들어간 커스터마이즈 비상구 표시 장치 일러스트">
+                            <div class="project-image-label">
+                                <i class="bi bi-door-open-fill text-success"></i>
+                                <span>맞춤형 비상구 표시장치 콘셉트 이미지</span>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <div class="level-badge level-medium">
+                                <i class="bi bi-emoji-neutral"></i> 난이도 · 중
+                            </div>
+                            <h3 class="project-title">
+                                <i class="bi bi-door-open-fill text-amber-500"></i>
+                                맞춤형 비상구 표시장치 만들기
+                            </h3>
+                            <p class="project-subtitle">상황에 따라 방향과 밝기가 바뀌는 스마트 비상구 안내 시스템을 설계합니다.</p>
+                            <p class="project-desc">
+                                센서와 마이크로컨트롤러를 활용해 화재·정전·연기 농도 등 상황에 따라 다른 방향을 안내하는 비상구 표시장치를 만듭니다.
+                                교실·복도 구조를 분석해 가장 안전한 대피 경로를 알고리즘으로 설계하고, LED·아이콘 디자인까지 직접 결정합니다.
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag-pill"><i class="bi bi-brightness-high"></i> LED 제어</span>
+                                <span class="tag-pill"><i class="bi bi-exclamation-triangle"></i> 안전·방재</span>
+                                <span class="tag-pill"><i class="bi bi-diagram-3"></i> 경로 알고리즘</span>
+                                <span class="tag-pill"><i class="bi bi-code"></i> 중급 코딩 & 센서</span>
+                            </div>
+                            <div class="project-footer">
+                                <span><i class="bi bi-clock"></i> 권장: 8~10차시</span>
+                                <button class="btn-start">
+                                    <i class="bi bi-play-fill"></i> 프로젝트 시작
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 난이도 상: 이석증 진단 스마트폰 앱 -->
+                <div class="col-md-4">
+                    <div class="project-card-wrap">
+                        <div class="project-image-area">
+                            <img src="images/vertigo-diagnosis-app.jpg" alt="스마트폰 화면에 어지럼증 진단 그래프와 사람 실루엣이 보여지는 의료 AI 앱 콘셉트 일러스트">
+                            <div class="project-image-label">
+                                <i class="bi bi-phone-vibrate-fill text-info"></i>
+                                <span>이석증 진단 스마트폰 앱 콘셉트 이미지</span>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <div class="level-badge level-hard">
+                                <i class="bi bi-emoji-dizzy"></i> 난이도 · 상
+                            </div>
+                            <h3 class="project-title">
+                                <i class="bi bi-phone-fill text-rose-500"></i>
+                                이석증 진단 스마트폰앱 만들기
+                            </h3>
+                            <p class="project-subtitle">사용자의 증상 데이터를 기반으로 이석증 가능성을 추정하는 AI 보조 앱을 기획·개발합니다.</p>
+                            <p class="project-desc">
+                                어지럼 관련 설문과 자세·머리 움직임 데이터를 수집하고, 간단한 머신러닝·규칙 기반 로직으로 이석증 가능성을 추정하는 프로토타입 앱을 만듭니다.
+                                의료 앱 윤리, 데이터 프라이버시, 오진 방지를 위한 안내 문구 등 실제 서비스 수준의 UX까지 함께 설계합니다.
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag-pill"><i class="bi bi-activity"></i> 헬스케어 앱</span>
+                                <span class="tag-pill"><i class="bi bi-phone"></i> 스마트폰 센서</span>
+                                <span class="tag-pill"><i class="bi bi-cpu"></i> AI·ML 기초</span>
+                                <span class="tag-pill"><i class="bi bi-shield-lock"></i> 데이터 윤리</span>
+                            </div>
+                            <div class="project-footer">
+                                <span><i class="bi bi-clock"></i> 권장: 10~12차시</span>
+                                <button class="btn-start">
+                                    <i class="bi bi-play-fill"></i> 프로젝트 시작
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 하단 안내 -->
+            <div class="row justify-content-center mt-5">
+                <div class="col-lg-8">
+                    <div class="intro-card">
+                        <h3><i class="bi bi-check2-circle me-1"></i> 발전학습 완성 체크포인트</h3>
+                        <p>각 프로젝트를 마치면, 다음 역량을 스스로 점검해 보세요.</p>
+                        <p>
+                            · 문제 정의 → 설계 → 구현 → 테스트 → 발표까지 전 과정을 스스로 관리했는가?<br>
+                            · 데이터를 근거로 제품을 개선하거나, AI를 활용해 더 나은 결론을 도출했는가?<br>
+                            · 팀과의 협업, 사용자 관점의 UX/UI, 실제로 ‘쓰이는’ 제품을 의식하며 개발했는가?
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
