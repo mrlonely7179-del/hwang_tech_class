@@ -92,33 +92,9 @@
             margin-bottom: 0;
         }
 
-        .page-header-sub {
-            margin-top: 8px;
-            font-size: 0.95rem;
-            opacity: 0.9;
-        }
-
         /* 내용 섹션 */
         .content-section {
             padding: 50px 15px 60px;
-        }
-
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: #1E3A8A;
-            text-align: center;
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .section-title span {
-            font-size: 1rem;
-            font-weight: 500;
-            color: #4B5563;
         }
 
         /* 카드 레이아웃 */
@@ -179,7 +155,6 @@
         .problem-image-overlay {
             position: absolute;
             inset: 0;
-            /* 이전보다 훨씬 옅은 그라디언트로 변경 */
             background: linear-gradient(to bottom, rgba(15,23,42,0.02), rgba(15,23,42,0.45));
             pointer-events: none;
         }
@@ -246,33 +221,6 @@
             box-shadow: 0 4px 12px rgba(15, 23, 42, 0.65);
         }
 
-        /* 하단 안내 */
-        .goal-box {
-            max-width: 900px;
-            margin: 40px auto 0;
-            border-radius: 24px;
-            padding: 22px 24px;
-            background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 45%, #FCD34D 100%);
-            border-left: 6px solid #F59E0B;
-            box-shadow: 0 14px 30px rgba(180, 83, 9, 0.3);
-            color: #78350F;
-        }
-
-        .goal-box h5 {
-            font-weight: 800;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .goal-box ul {
-            padding-left: 18px;
-            margin: 0;
-            line-height: 1.9;
-            font-size: 0.95rem;
-        }
-
         @media (max-width: 991.98px) {
             .page-header {
                 padding: 50px 16px 34px;
@@ -307,22 +255,16 @@
         <div class="page-header-content">
             <h1><i class="bi bi-brilliance"></i> 심화학습</h1>
             <p>문제 상황을 분석하고 창의적인 공학 설계로 해결안을 제시해 보세요.</p>
-            <div class="page-header-sub">
-                보행자 안전, 미래 항공, 오토마타, 통신기술 등 다양한 공학 문제를 프로젝트로 해결합니다.
-            </div>
+            <!-- 보행자 안전, 미래 항공… 문장 삭제 -->
         </div>
     </header>
 
     <!-- 내용 영역 -->
     <section class="content-section">
         <div class="container">
-            <h2 class="section-title">
-                <i class="bi bi-diagram-3-fill"></i>
-                문제 상황 선택
-                <span>관심 있는 주제를 골라 설계를 시작해 보세요.</span>
-            </h2>
+            <!-- 문제 상황 선택 / 부제 전체 삭제 -->
 
-            <!-- 4개 문제상황 카드 -->
+            <!-- 3개 문제상황 카드 -->
             <div class="row g-4 problem-row">
                 <!-- 1. 유선형 태양광 자동차 -->
                 <div class="col-md-6 col-lg-3 problem-card-wrapper">
@@ -382,80 +324,24 @@
                     </div>
                 </div>
 
-                <!-- 3. 재미있는 테마 오토마타 -->
+                <!-- 3. 세상을 바꾸는 착한 적정기술 설계하기 -->
                 <div class="col-md-6 col-lg-3 problem-card-wrapper">
                     <div class="problem-card">
                         <div class="problem-image-box">
-                            <img src="image/auto.png" alt="재미있는 오토마타">
+                            <img src="image/AT.png" alt="세상을 바꾸는 적정기술">
                             <div class="problem-image-overlay"></div>
                         </div>
                         <div class="problem-body">
                             <h3 class="problem-title">
-                                테마가 있는<br>오토마타 설계하기
+                                세상을 바꾸는<br>착한 적정기술 설계하기
                             </h3>
                             <p class="problem-desc">
-                                스토리가 있는 장면이나 캐릭터를 정하고,<br>
-                                기어·캠 구조로 움직임이 살아있는<br>
-                                오토마타 작품을 설계·제작합니다.
+                                물·에너지·위생·안전과 같은 생활 속 문제를 찾아보고,<br>
+                                지역의 재료와 간단한 도구를 활용하여<br>
+                                모두에게 도움이 되는 적정기술을 설계합니다.
                             </p>
                             <div class="problem-meta">
-                                • 기술 영역: 기계·제작기술<br>
-                                • 결과물: 구조 설계도, 완성 작품 사진
+                                • 기술 영역: 지속가능기술 · 적정기술<br>
+                                • 결과물: 문제 분석서, 설계도, 모델 또는 모형
                             </div>
-                            <a href="https://docs.google.com/forms/d/CCCCCCCCCCCCCCCCCCCCC/viewform"
-                               class="btn-make" target="_blank" rel="noopener">
-                                <i class="bi bi-pen"></i>
-                                제작하기
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 4. LED로 표현한 블루투스 기호 -->
-                <div class="col-md-6 col-lg-3 problem-card-wrapper">
-                    <div class="problem-card">
-                        <div class="problem-image-box">
-                            <img src="image/info.png" alt="LED로 표현한 블루투스 통신 기호">
-                            <div class="problem-image-overlay"></div>
-                        </div>
-                        <div class="problem-body">
-                            <h3 class="problem-title">
-                                효과적으로<br>통신기술 표현하기
-                            </h3>
-                            <p class="problem-desc">
-                                블루투스 통신 원리를 이해하고,<br>
-                                LED와 아이콘을 활용하여 정보 전달 과정을<br>
-                                시각적으로 표현하는 활동입니다.
-                            </p>
-                            <div class="problem-meta">
-                                • 기술 영역: 정보통신기술<br>
-                                • 결과물: 인포그래픽, 모형, 발표 자료
-                            </div>
-                            <a href="https://docs.google.com/forms/d/DDDDDDDDDDDDDDDDDDD/viewform"
-                               class="btn-make" target="_blank" rel="noopener">
-                                <i class="bi bi-pen"></i>
-                                제작하기
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 학습 성과 안내 -->
-            <div class="goal-box mt-4">
-                <h5><i class="bi bi-bullseye"></i> 이 심화학습을 마치면</h5>
-                <ul>
-                    <li>실제 생활과 연결된 공학적 문제를 스스로 정의하고 해결 과정을 설계하는 능력을 기릅니다.</li>
-                    <li>친환경, 미래 교통, 자동화, 정보통신 등 다양한 기술 영역을 융합하여 창의적인 아이디어를 제안합니다.</li>
-                    <li>구글 폼을 활용한 설계 기록과 발표 자료 작성으로, 자기주도적 학습과 협업 능력을 함께 발전시킵니다.</li>
-                    <li>문제 분석 → 아이디어 생성 → 설계·제작 → 공유·피드백까지의 전 과정을 한 번에 경험해 봅니다.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
-
+                            <a href="https
